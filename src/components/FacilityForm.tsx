@@ -62,7 +62,7 @@ export function FacilityForm() {
             <FormItem>
               <FormLabel>Type of facility</FormLabel>
               <FormControl>
-                <Input placeholder="Not exactly what for orecin g" {...field} />
+                <Input placeholder="Type of facility" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -83,7 +83,7 @@ export function FacilityForm() {
         />
         <FormField
           control={form.control}
-          name="typeOfFacility"
+          name="dateCreated"
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-base">

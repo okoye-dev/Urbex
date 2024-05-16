@@ -12,7 +12,13 @@ const Header: FC<IProps> = () => {
 
   return (
     <header className="flex justify-between sm:justify-end bg-blue h-12 py-2 px-3 static sm:fixed sm:left-0 sm:w-full z-50">
-      <img onClick={toggleNav} src={logo} alt="" className="sm:left-3 sm:absolute" />
+      {navOpen && ""}
+      <img
+        onClick={toggleNav}
+        src={logo}
+        alt=""
+        className="sm:left-3 sm:absolute"
+      />
       <div className="flex justify-center items-center gap-5 px-8">
         <div className="flex items-center gap-2">
           <img src={en} alt="" />

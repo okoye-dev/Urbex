@@ -49,7 +49,7 @@ export function FacilityForm() {
             <FormItem>
               <FormLabel>Name of facility</FormLabel>
               <FormControl>
-                <Input placeholder="Type of facility" {...field} />
+                <Input placeholder="Name of facility" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

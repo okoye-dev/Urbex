@@ -1,13 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import CreateFacility from "./pages/CreateFacility/CreateFacility";
-
+import Dashboard from "@/pages/Dashboard";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/create-facility" element={<CreateFacility />}></Route>
+        <Route path="/" element={<Dashboard />}></Route>
       </Routes>
     </BrowserRouter>
   );

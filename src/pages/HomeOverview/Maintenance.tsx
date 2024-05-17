@@ -8,12 +8,12 @@ interface IProps {}
 
 const Maintenance: FC<IProps> = () => {
   return (
-    <div className="text-white flex flex-col justify-center items-center sm:px-8">
+    <div className="text-white flex flex-col justify-center items-center px-6 md:px-4 lg:px-1">
       <section className="flex lg:flex-row flex-col  w-full py-2 gap-5 md:px-2 lg:px-5">
         <OverviewOfMaintenance />
         <MostMaintenance />
       </section>
-      <section className="flex lg:flex-row flex-col md:items-center lg:items-start sm:items-center p-5">
+      <section className="flex lg:flex-row flex-col md:items-center lg:items-start sm:items-center pt-5 md:px-2">
         <img
           src={analytics}
           alt="analytics"

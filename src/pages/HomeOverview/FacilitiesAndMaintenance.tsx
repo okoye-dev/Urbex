@@ -19,7 +19,7 @@ const FacilitiesAndMaintenance: FC<IProps> = () => {
           return (
             <div
               key={index}
-              className="sm:hidden flex flex-col justify-center gap-3 py-5 w-full lg:px-8 px-4 relative"
+              className="hidden lg:flex flex-col justify-center gap-3 py-5 w-full lg:px-8 px-4 relative"
             >
               <p className="text-black/80 font-medium">{item.title}</p>
               <p
@@ -43,12 +43,12 @@ const FacilitiesAndMaintenance: FC<IProps> = () => {
         })}
       </section>
 
-      <section className="md:hidden flex flex-wrap bg-white rounded-lg justify-center p-6 gap-3">
+      <section className="lg:hidden flex flex-wrap bg-white rounded-lg justify-center p-6 gap-3">
         {facilitiesAndMaintenance.map((item, index) => {
           return (
             <div
               key={index}
-              className="sm:static md:hidden flex flex-col justify-center gap-3 py-5 px-4 relative w-[7rem] text-xs md:text-sm bg-lightgray rounded-lg"
+              className="sm:static flex flex-col justify-center gap-3 py-4 px-4 md:px-8 relative w-[45%] text-xs ipad:text-sm md:text-base bg-lightgray rounded-lg"
             >
               <p className="text-black/80 font-medium">{item.title}</p>
               <p

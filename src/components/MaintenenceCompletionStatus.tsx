@@ -6,7 +6,7 @@ interface IProps {}
 const MaintenenceCompletionStatus: FC<IProps> = () => {
   return (
     <div className="bg-blue rounded-lg p-3 flex flex-col h-[16rem] justify-between items-center relative sm:w-full">
-      <span className="flex justify-center md:gap-12 sm:justify-between text-xs sm:text-[0.65rem] font-medium sm:w-full">
+      <span className="flex justify-center md:gap-7 lg:gap-12 sm:justify-between lg:text-xs md:text-[0.65rem] sm:text-[0.65rem] font-medium sm:w-full">
         <p className="p-2 sm:px-2 sm:py-1 rounded-lg bg-white text-black text-nowrap">
           4 Bedroom Flat
         </p>

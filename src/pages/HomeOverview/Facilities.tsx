@@ -33,10 +33,10 @@ const Facilities: FC<IProps> = () => {
 
   return (
     <div className="px-6">
-      <span className="flex flex-col bg-white rounded-lg px-8 py-4 gap-4 mb-4">
+      <span className="flex flex-col bg-white rounded-lg px-8 py-4 gap-4 ------mb-4 lg:-translate-y-9 my-4 md:my-6 lg:my-0">
         <header className="flex justify-between items-center">
 
-          <p className="font-semibold pb-5 text-lg">Facilities</p>
+          <p className="font-semibold text-lg">Facilities</p>
           <Select>
             <SelectTrigger className="w-[140px] rounded-full border-2 border-[#B3B3FF]">
               <img src={newestLeft} alt="" className="px-1" />

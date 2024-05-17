@@ -1,45 +1,38 @@
 import { useNavItems } from "@/hooks/useNavItems";
-import { FC } from "react";
-import { useContext } from "react";
+import { FC, useEffect, useContext } from "react";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import { OpenNavContext } from "@/contexts/OpenNavContext";
-import { NavigateFunction, useNavigate } from "react-router-dom";
 
 interface SideNavProps {}
 
 const SideNav: FC<SideNavProps> = ({}: SideNavProps) => {
-  const navigate: NavigateFunction = useNavigate();
   const navItems = useNavItems();
   const { activeNav, makeActive } = useContext(ActiveNavContext);
   const { navOpen, toggleNav } = useContext(OpenNavContext);
 
-  const selectNavItem = (title: string) => {
+  const selectNavItem = () => {
     const timeout = setTimeout(() => {
       toggleNav();
-      if (title == "Create Facility") {
-        navigate("/create-facility");
-      }
-      if (title == "Home Overview") {
-        navigate("/");
-      } else {
-        return;
-      }
     }, 100);
 
     return () => clearTimeout(timeout);
   };
 
+  useEffect(() => {
+    console.log(activeNav);
+  }, [activeNav]);
+
   return (
     <nav
       className={` ${
         navOpen ? "translate-x-0" : "sm:-translate-x-[16rem]"
-      } transition-transform duration-300 ease-in-out flex flex-col text-white bg-blue border-lightgray border-r text-nowrap fixed top-12 md:static z-20 sm:h-full`}
+      } transition-transform duration-300 ease-in-out flex flex-col text-white bg-blue border-darkgray border-r text-nowrap fixed top-12 md:static z-20 sm:h-full`}
     >
       {navItems.map((item, index) => (
         <div
           onClick={() => {
             makeActive(item.title);
-            selectNavItem(item.title);
+            selectNavItem();
           }}
           key={index}
           className={`${

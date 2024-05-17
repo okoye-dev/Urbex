@@ -1,15 +1,15 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { Button } from "@/components/ui/button";
 import addstaff from "@/assets/add-staff.svg";
-import GreetingCard from "../../components/GreetingCard";
+import GreetingCard from "./GreetingCard";
+import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 
-interface IProps {}
-
-const HomeOverview: FC<IProps> = () => {
+const DashboardIntro: FC = () => {
+  const { activeNav } = useContext(ActiveNavContext);
   return (
     <div className="py-3 px-6">
-      <header className="flex sm:flex-col justify-between pb-8 items-center">
-        <h1 className="font-semibold text-lg sm:pb-3">Home Overview</h1>
+      <header className="flex flex-wrap justify-between text-center items-center pb-6">
+        <h1 className="font-semibold ipad:text-lg py-2">{activeNav}</h1>
         <div className="flex gap-3">
           <Button>
             <img src={addstaff} alt="" className="pr-2" />
@@ -23,4 +23,4 @@ const HomeOverview: FC<IProps> = () => {
   );
 };
 
-export default HomeOverview;
+export default DashboardIntro;

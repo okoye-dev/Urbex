@@ -1,6 +1,5 @@
 import { FC } from "react";
-import Layout from "@/pages/Layout";
-import HomeOverview from "./HomeOverview";
+import DashboardIntro from "../../components/DashboardIntro";
 import FacilitiesAndMaintenance from "./FacilitiesAndMaintenance";
 import Maintenance from "./Maintenance";
 import Facilities from "./Facilities";
@@ -8,12 +7,12 @@ interface IProps {}
 
 const Home: FC<IProps> = () => {
   return (
-    <Layout>
-      <HomeOverview />
+    <>
+      <DashboardIntro />
       <FacilitiesAndMaintenance />
       <Maintenance />
       <Facilities />
-    </Layout>
+    </>
   );
 };
 

@@ -99,7 +99,7 @@ export function FacilityForm() {
             </FormItem>
           )}
         />
-        <Button>Submit</Button>
+        <Button className="translate-y-2 w-40 text-sm py-[18px] bg-blue rounded-lg">Submit</Button>
       </form>
     </Form>
   );

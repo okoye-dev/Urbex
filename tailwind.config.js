@@ -18,7 +18,7 @@ module.exports = {
     },
     screens: {
       sm: { min: "360px", max: "799px" },
-      ipad: "700px",
+      ipad: "600px",
       md: "800px",
       lg: "1200px",
     },

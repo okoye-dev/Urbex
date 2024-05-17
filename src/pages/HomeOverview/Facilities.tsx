@@ -41,7 +41,7 @@ const Facilities: FC<IProps> = () => {
               <img src={newestLeft} alt="" className="px-1" />
               <SelectValue placeholder="Newest" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="font-quicksand">
               <SelectItem value="light">Newest</SelectItem>
               <SelectItem value="dark">Oldest</SelectItem>
               <SelectItem value="system">History</SelectItem>

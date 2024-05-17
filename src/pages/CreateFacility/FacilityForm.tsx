@@ -47,7 +47,7 @@ export function FacilityForm() {
           name="nameOfFacility"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name of facility</FormLabel>
+              <FormLabel className="text-base">Name of facility</FormLabel>
               <FormControl>
                 <Input placeholder="Name of facility" {...field} />
               </FormControl>
@@ -60,7 +60,7 @@ export function FacilityForm() {
           name="typeOfFacility"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Type of facility</FormLabel>
+              <FormLabel className="text-base">Type of facility</FormLabel>
               <FormControl>
                 <Input placeholder="Type of facility" {...field} />
               </FormControl>
@@ -99,7 +99,9 @@ export function FacilityForm() {
             </FormItem>
           )}
         />
-        <Button className="translate-y-2 w-40 text-sm py-[18px] bg-blue rounded-lg">Submit</Button>
+        <Button className="translate-y-2 w-40 text-sm py-[18px] bg-blue rounded-lg">
+          Submit
+        </Button>
       </form>
     </Form>
   );

@@ -35,8 +35,7 @@ const Facilities: FC<IProps> = () => {
     <div className="px-6">
       <span className="flex flex-col bg-white rounded-lg px-8 py-4 gap-4 ------mb-4 lg:-translate-y-9 my-4 md:my-6 lg:my-0">
         <header className="flex justify-between items-center">
-
-          <p className="font-semibold text-lg">Facilities</p>
+          <p className="font-bold text-lg">Facilities</p>
           <Select>
             <SelectTrigger className="w-[140px] rounded-full border-2 border-[#B3B3FF]">
               <img src={newestLeft} alt="" className="px-1" />
@@ -48,10 +47,9 @@ const Facilities: FC<IProps> = () => {
               <SelectItem value="system">History</SelectItem>
             </SelectContent>
           </Select>
-
         </header>
-        
-        <div className="flex w-full text-xs bg-lightgray h-10 sm:text-[0.65rem] sm:font-semibold">
+
+        <div className="flex w-full text-xs bg-lightgray h-10 sm:text-[0.65rem] sm:font-bold font-medium">
           {facilities.map((item, index) => (
             <p
               key={index}
@@ -71,7 +69,7 @@ const Facilities: FC<IProps> = () => {
               key={index}
               className="flex items-center w-full text-xs sm:text-[0.65rem] sm:h-8 h-6"
             >
-              <p className="w-1/4 items-center flex pl-4 font-semibold">
+              <p className="w-1/4 items-center flex pl-4 font-bold">
                 {list.name}
               </p>
               <p className="w-1/4 pl-4">{list.dateBought}</p>

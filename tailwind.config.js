@@ -23,7 +23,10 @@ module.exports = {
       lg: "1200px",
     },
     extend: {
-      fontFamily: { poppins: ["Poppins", "sans-serif"] },
+      fontFamily: {
+        quicksand: ["Quicksand", "sans-serif"],
+        syne: ["Syne", "sans-serif"],
+      },
       colors: {
         blue: "#172337",
         darkblue: "#0B172C",

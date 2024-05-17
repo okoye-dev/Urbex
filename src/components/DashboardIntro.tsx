@@ -9,7 +9,7 @@ const DashboardIntro: FC = () => {
   return (
     <div className="py-3 px-6">
       <header className="flex flex-wrap justify-between text-center items-center pb-6">
-        <h1 className="font-semibold ipad:text-lg py-2">{activeNav}</h1>
+        <h1 className="font-bold ipad:text-lg py-2">{activeNav}</h1>
         <div className="flex gap-3">
           <Button>
             <img src={addstaff} alt="" className="pr-2" />

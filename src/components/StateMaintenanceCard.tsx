@@ -17,7 +17,7 @@ const StateMaintenanceCard: FC<IProps> = () => {
           <div className="flex gap-3 items-center">
             <span className="w-8 aspect-square rounded-full bg-black/10"></span>
             <div className="flex flex-col ipad:text-sm lg:text-xs">
-              {instance.state} <p className="font-light ipad:py-1">1,240</p>
+              {instance.state} <p className="font-medium ipad:py-1">1,240</p>
             </div>
           </div>
           <div className="flex items-center gap-2 sm:pr-4 ipad:text-sm lg:text-xs">

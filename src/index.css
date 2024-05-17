@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: "Poppins", sans-serif;
-}
 
 @layer base {
   :root {
@@ -78,5 +75,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-

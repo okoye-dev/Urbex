@@ -11,7 +11,7 @@ const CreateFacility: FC<IProps> = () => {
       <DashboardIntro />
       <FacilitiesAndMaintenance />
       <div className="p-10 w-full flex flex-col">
-        <span className="py-6 font-semibold text-2xl text-indigo-700 underline">
+        <span className="py-6 font-bold text-2xl text-indigo-700 underline">
           Facility
         </span>
         <FacilityForm />

@@ -9,7 +9,7 @@ const OverviewOfMaintenance: FC<IProps> = () => {
   const [maintenanceMetrics, maintenanceMetricsTwo] = useMaintenanceMetrics();
 
   return (
-    <div className="bg-darkblue w-full lg:w-[70%] rounded-lg px-3 sm:px-6 py-4 font-light border border-red">
+    <div className="bg-darkblue w-full lg:w-[70%] rounded-lg px-3 sm:px-6 py-4 border border-red font-syne">
       <p className="font-medium text-[1.425rem] pb-4 text-white/70">
         Overview of Maintenance
       </p>

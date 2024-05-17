@@ -15,13 +15,15 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
 
   return (
     <OpenNavContext.Provider value={{ navOpen, toggleNav }}>
-      <Header />
-      <section className="flex min-h-screen">
-        <SideNav />
-        <section className="sm:mt-12 w-full bg-lightgray overflow-hidden">
-          {children}
+      <div className="font-quicksand">
+        <Header />
+        <section className="flex min-h-screen">
+          <SideNav />
+          <section className="sm:mt-12 w-full bg-lightgray overflow-hidden">
+            {children}
+          </section>
         </section>
-      </section>
+      </div>
     </OpenNavContext.Provider>
   );
 };

@@ -7,7 +7,7 @@ const GreetingCard: FC<IProps> = () => {
   
   return (
     <div className="rounded-lg bg-white py-2 px-4">
-      <h1 className="font-semibold pb-2 text-sm">
+      <h1 className="font-bold pb-2 text-sm">
         {" "}
         Good to see you, {name} 👋
       </h1>

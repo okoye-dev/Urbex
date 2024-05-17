@@ -6,7 +6,7 @@ interface IProps {}
 
 const MostMaintenance: FC<IProps> = () => {
   return (
-    <div className="flex flex-col rounded-lg font-semibold text-black bg-white py-3 px-6">
+    <div className="flex flex-col rounded-lg font-bold text-black bg-white py-3 px-6">
       <h1 className="flex justify-between items-center">
         Most Maintenance
         <img src={dots} alt="options" className="cursor-pointer" />

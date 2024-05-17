@@ -36,7 +36,7 @@ const SideNav: FC<SideNavProps> = ({}: SideNavProps) => {
           }}
           key={index}
           className={`${
-            activeNav == item.title && "bg-white text-black font-semibold"
+            activeNav == item.title && "bg-white text-black font-extrabold"
           } h-14 w-60 pl-4 flex items-center gap-3 text-xs cursor-pointer transition-colors duration-400 ease-in-out`}
         >
           <img

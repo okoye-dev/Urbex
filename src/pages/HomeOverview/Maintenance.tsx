@@ -1,7 +1,7 @@
 import { FC } from "react";
-import OverviewOfMaintenance from "../../components/OverviewOfMaintenance";
-import MostMaintenance from "@/components/MostMaintenance";
-import MaintenanceInProgress from "@/components/MaintenanceInProgress";
+import OverviewOfMaintenance from "./OverviewOfMaintenance";
+import MostMaintenance from "@/pages/HomeOverview/MostMaintenance";
+import MaintenanceInProgress from "@/pages/HomeOverview/MaintenanceInProgress";
 import analytics from "@/assets/analytics.png";
 
 interface IProps {}

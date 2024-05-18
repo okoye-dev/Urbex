@@ -11,7 +11,9 @@ const MostMaintenance: FC<IProps> = () => {
         Most Maintenance
         <img src={dots} alt="options" className="cursor-pointer" />
       </h1>
-      <p className="text-[0.7rem] sm:text-sm text-black/50 font-normal">Based on State</p>
+      <p className="text-[0.7rem] sm:text-sm text-black/50 font-normal">
+        Based on State
+      </p>
       <StateMaintenanceCard />
     </div>
   );

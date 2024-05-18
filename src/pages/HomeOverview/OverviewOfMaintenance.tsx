@@ -1,5 +1,5 @@
 import MaintenanceCard from "@/pages/HomeOverview/MaintenanceCard";
-import MaintenenceCompletionStatus from "@/components/MaintenenceCompletionStatus";
+import MaintenenceCompletionStatus from "@/pages/HomeOverview/MaintenenceCompletionStatus";
 import { useMaintenanceMetrics } from "@/pages/HomeOverview/hooks/useMaintenanceMetrics";
 import { FC } from "react";
 

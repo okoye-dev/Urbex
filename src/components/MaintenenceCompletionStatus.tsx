@@ -18,8 +18,9 @@ const MaintenenceCompletionStatus: FC<IProps> = () => {
       <img
         src={purplesemicircle}
         alt=""
-        className="absolute top-1/3 -translate-x-[13px] -translate-y-5"
+        className="absolute top-1/3 -translate-x-[13px] sm:-translate-y-6 -translate-y-5"
       />
+
       <span className="text-center text-white/50 text-[0.65rem] rounded-full border-2 border-white/50 p-[12px] aspect-square flex flex-col justify-center items-center font-quicksand">
         <p className="text-white font-bold text-xl font-syne">60%</p> Completed
       </span>
@@ -27,12 +28,12 @@ const MaintenenceCompletionStatus: FC<IProps> = () => {
       <div className="flex justify-center items-center text-[0.5rem] gap-6">
         <span className="flex flex-col">
           <h1 className="text-xl font-bold">20</h1>
-          <p className="font-quicksand">Due for maintenance</p>
+          <p className="font-quicksand text-xs">Due for maintenance</p>
         </span>
         <span className="w-[2px] h-3/5 top-[20%] bg-white/20"></span>
         <span className="flex flex-col">
           <h1 className="text-xl font-bold">25</h1>
-          <p className="font-quicksand">Ongoing</p>
+          <p className="font-quicksand text-xs">Ongoing</p>
         </span>
       </div>
     </div>

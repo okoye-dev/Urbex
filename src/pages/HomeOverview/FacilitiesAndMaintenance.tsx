@@ -1,4 +1,4 @@
-import { useFacilitiesAndMaintenance } from "@/hooks/useFacilitiesAndMaintenance";
+import { useFacilitiesAndMaintenance } from "@/pages/HomeOverview/hooks/useFacilitiesAndMaintenance";
 import { FC } from "react";
 
 interface IProps {}

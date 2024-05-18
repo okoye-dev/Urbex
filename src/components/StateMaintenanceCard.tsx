@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Progress } from "@/components/ui/progress";
-import { useMaintenanceStateData } from "@/hooks/useMaintenanceStateData";
+import { useMaintenanceStateData } from "@/pages/HomeOverview/hooks/useMaintenanceStateData";
 
 interface IProps {}
 

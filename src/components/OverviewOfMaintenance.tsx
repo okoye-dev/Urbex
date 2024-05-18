@@ -1,6 +1,6 @@
-import MaintenanceCard from "@/components/MaintenanceCard";
+import MaintenanceCard from "@/pages/HomeOverview/MaintenanceCard";
 import MaintenenceCompletionStatus from "@/components/MaintenenceCompletionStatus";
-import { useMaintenanceMetrics } from "@/hooks/useMaintenanceMetrics";
+import { useMaintenanceMetrics } from "@/pages/HomeOverview/hooks/useMaintenanceMetrics";
 import { FC } from "react";
 
 interface IProps {}

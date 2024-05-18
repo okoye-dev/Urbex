@@ -8,17 +8,20 @@ interface IProps {}
 
 const Maintenance: FC<IProps> = () => {
   return (
-    <div className="text-white flex flex-col justify-center items-center px-6 md:px-4 lg:px-1">
-      <section className="flex lg:flex-row flex-col  w-full py-2 gap-5 md:px-2 lg:px-5">
+    <div className="text-white flex flex-col justify-center items-center px-6">
+      <section className="flex lg:flex-row flex-col w-full py-2 gap-4">
         <OverviewOfMaintenance />
         <MostMaintenance />
       </section>
-      <section className="flex lg:flex-row flex-col md:items-center lg:items-start sm:items-center pt-5 md:px-2">
-        <img
-          src={analytics}
-          alt="analytics"
-          className="lg:w-[73%] lg:max-w-[800px] lg:-translate-x-3 lg:-translate-y-9 w-screen translate-x-0 translate-y-0"
-        />
+
+      <section className="flex lg:flex-row flex-col md:items-center lg:items-start sm:items-center lg:gap-4 gap-1">
+        <div className="overflow-hidden">
+          <img
+            src={analytics}
+            alt="analytics"
+            className="object-cover scale-[1.075]"
+          />
+        </div>
         <MaintenanceInProgress />
       </section>
     </div>

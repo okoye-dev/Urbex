@@ -1,5 +1,5 @@
 import { useNavItems } from "@/hooks/useNavItems";
-import { FC, useEffect, useContext } from "react";
+import { FC, useContext } from "react";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import { OpenNavContext } from "@/contexts/OpenNavContext";
 
@@ -17,10 +17,6 @@ const SideNav: FC<SideNavProps> = ({}: SideNavProps) => {
 
     return () => clearTimeout(timeout);
   };
-
-  useEffect(() => {
-    console.log(activeNav);
-  }, [activeNav]);
 
   return (
     <nav

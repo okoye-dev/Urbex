@@ -1,9 +1,11 @@
 import { ColumnDef } from "@tanstack/react-table";
+import { ReactNode } from "react";
+import { Ongoing, Pending, UpToDate } from "./FacilityStatuses";
 
 export interface FacilityProps {
   nameOfFacility: string;
   type: string;
-  status: "Up to date" | "Ongoing" | "Pending";
+  status: ReactNode;
   numberOfAppliances: number;
   joiningDate: string;
   team: string;
@@ -21,6 +23,18 @@ export const columns: ColumnDef<FacilityProps>[] = [
   {
     header: "Status",
     accessorKey: "status",
+    cell: (info) => {
+      const value = info.getValue();
+      if (value === "Up to date") {
+        return <UpToDate />;
+      } else if (value === "Pending") {
+        return <Pending />;
+      } else if (value === "Ongoing") {
+        return <Ongoing />;
+      } else {
+        return <div>Unknows status</div>;
+      }
+    },
   },
   {
     header: "Number of Appliances",

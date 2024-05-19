@@ -7,7 +7,7 @@ interface SearchBarProps {
 
 const SearchBar: FC<SearchBarProps> = ({ className }: SearchBarProps) => {
   return (
-    <div className="relative">
+    <div className="relative w-3/5">
       <img
         src={search}
         alt="search"
@@ -17,7 +17,7 @@ const SearchBar: FC<SearchBarProps> = ({ className }: SearchBarProps) => {
       <input
         type="text"
         placeholder="Search"
-        className={`${className!} w-full border border-black/30 rounded-lg py-1 px-6 focus:outline-none text-sm`}
+        className={`${className!} w-full min-w-40 border border-black/30 rounded-lg py-1 px-6 focus:outline-none text-sm`}
       />
     </div>
   );

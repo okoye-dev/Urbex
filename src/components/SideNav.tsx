@@ -2,6 +2,7 @@ import { useNavItems } from "@/hooks/useNavItems";
 import { FC, useContext } from "react";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import { OpenNavContext } from "@/contexts/OpenNavContext";
+import { AppliancesContext } from "@/contexts/AppliancesContext";
 
 interface SideNavProps {}
 
@@ -9,8 +10,11 @@ const SideNav: FC<SideNavProps> = ({}: SideNavProps) => {
   const navItems = useNavItems();
   const { activeNav, makeActive } = useContext(ActiveNavContext);
   const { navOpen, toggleNav } = useContext(OpenNavContext);
-
+  const { isAppliancesOpen, toggleAppliances } = useContext(AppliancesContext);
   const selectNavItem = () => {
+    if (isAppliancesOpen) {
+      toggleAppliances();
+    }
     const timeout = setTimeout(() => {
       toggleNav();
     }, 100);

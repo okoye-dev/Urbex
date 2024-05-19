@@ -12,7 +12,6 @@ const Dashboard: FC<IProps> = () => {
   const makeActive = (title: string) => {
     setActiveNav(title);
   };
-
   return (
     <ActiveNavContext.Provider value={{ activeNav, makeActive }}>
       <Layout>

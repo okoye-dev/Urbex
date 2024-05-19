@@ -1,4 +1,4 @@
-import { FacilityProps } from "./Columns";
+import { FacilityProps } from "../Columns";
 
 export const useManageFacility = () => {
   const facilities: FacilityProps[] = [

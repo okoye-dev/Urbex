@@ -1,5 +1,5 @@
 import { FC } from "react";
-import FacilitiesSelector from "./FacilitiesSelector";
+import FacilitiesSelector from "@/pages/HomeOverview/FacilitiesSelector";
 import FacilitiesTable from "./FacilitiesTable";
 import FacilitiesTableHeader from "./FacilitiesTableHeader";
 

@@ -1,30 +1,13 @@
-import {
-  SelectContent,
-  SelectItem,
-  SelectValue,
-  Select,
-  SelectTrigger,
-} from "@/components/ui/select";
-import {} from "@radix-ui/react-select";
+import Selector from "@/components/Selector";
 import { FC } from "react";
-import newestLeft from "@/assets/newest-left.svg";
+import { useFacilitiesSelector } from "@/pages/HomeOverview/useFacilitiesSelector";
 
 interface IProps {}
 
 const FacilitiesSelector: FC<IProps> = () => {
-  return (
-    <Select>
-      <SelectTrigger className="w-[140px] rounded-full border-2 border-[#B3B3FF]">
-        <img src={newestLeft} alt="" className="px-1" />
-        <SelectValue placeholder="Newest" />
-      </SelectTrigger>
-      <SelectContent className="font-quicksand">
-        <SelectItem value="light">Newest</SelectItem>
-        <SelectItem value="dark">Oldest</SelectItem>
-        <SelectItem value="system">History</SelectItem>
-      </SelectContent>
-    </Select>
-  );
+  const { placeholder, options } = useFacilitiesSelector();
+
+  return <Selector placeholder={placeholder} options={options} />;
 };
 
 export default FacilitiesSelector;

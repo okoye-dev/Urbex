@@ -1,21 +1,11 @@
-import { useTotalFacilitiesDataCard } from "@/hooks/useTotalDataCard";
 import { FC } from "react";
+import { TotalDataProps } from "@/hooks/useTotalDataCard";
 
-interface ITotalDataCardProps {}
-interface ITotalDataCard {
-  title: string;
-  value: number;
-  color: string;
-}
-
-const TotalDataCard: FC<ITotalDataCardProps> = () => {
-  const totalFacilitiesDataCard: ITotalDataCard[] =
-    useTotalFacilitiesDataCard();
-
+const TotalDataCard: FC<{ data: TotalDataProps[] }> = ({ data }) => {
   return (
     <div className="px-6 mt-8 mb-6 text-sm">
       <section className="font-semibold flex bg-white rounded-lg">
-        {totalFacilitiesDataCard.map((item, index) => {
+        {data.map((item, index) => {
           return (
             <div
               key={index}
@@ -44,7 +34,7 @@ const TotalDataCard: FC<ITotalDataCardProps> = () => {
       </section>
 
       <section className="font-semibold lg:hidden flex flex-wrap bg-white rounded-lg justify-center p-6 gap-3">
-        {totalFacilitiesDataCard.map((item, index) => {
+        {data.map((item, index) => {
           return (
             <div
               key={index}

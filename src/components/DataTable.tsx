@@ -18,6 +18,7 @@ import {
 import { DataTablePageButtons } from "@/components/DataTablePageButtons";
 import { useContext } from "react";
 import { AppliancesContext } from "@/contexts/AppliancesContext";
+import { ActiveAppliancesContext } from "@/contexts/ActiveAppliancesContext";
 
 export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -37,6 +38,15 @@ export function DataTable<TData, TValue>({
   const currentPage = table.getState().pagination.pageIndex;
   const numberOfPages = table.getPageCount();
   const { toggleAppliances } = useContext(AppliancesContext);
+  const { openActiveAppliance } = useContext(ActiveAppliancesContext);
+
+  const handleClick = (row: any) => {
+    const name = row.original.nameOfFacility;
+    const type = row.original.type;
+    const state = `${name} (${type})`;
+    openActiveAppliance(state);
+    toggleAppliances();
+  };
 
   return (
     <>
@@ -69,7 +79,9 @@ export function DataTable<TData, TValue>({
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
-                  onClick={toggleAppliances}
+                  onClick={() => {
+                    handleClick(row);
+                  }}
                   className="cursor-pointer"
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}

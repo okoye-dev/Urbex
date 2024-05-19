@@ -4,6 +4,7 @@ import { FC, useState } from "react";
 import { OpenNavContext } from "@/contexts/OpenNavContext";
 import DashboardIntro from "@/components/DashboardIntro";
 import { AppliancesContext } from "@/contexts/AppliancesContext";
+import { ActiveAppliancesContext } from "@/contexts/ActiveAppliancesContext";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -18,6 +19,10 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const toggleAppliances = () => {
     setIsAppliancesOpen(!isAppliancesOpen);
   };
+  const [activeAppliance, setActiveAppliance] = useState("");
+  const openActiveAppliance = (instance: string) => {
+    setActiveAppliance(instance);
+  };
 
   return (
     <OpenNavContext.Provider value={{ navOpen, toggleNav }}>
@@ -27,16 +32,20 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
           toggleAppliances,
         }}
       >
-        <div className="font-quicksand">
-          <Header />
-          <section className="flex min-h-screen">
-            <SideNav />
-            <section className="sm:mt-12 w-full bg-lightgray overflow-hidden">
-              <DashboardIntro isAppliances={isAppliancesOpen} />
-              {children}
+        <ActiveAppliancesContext.Provider
+          value={{ activeAppliance, openActiveAppliance }}
+        >
+          <div className="font-quicksand">
+            <Header />
+            <section className="flex min-h-screen">
+              <SideNav />
+              <section className="sm:mt-12 w-full bg-lightgray overflow-hidden">
+                <DashboardIntro isAppliances={isAppliancesOpen} />
+                {children}
+              </section>
             </section>
-          </section>
-        </div>
+          </div>
+        </ActiveAppliancesContext.Provider>
       </AppliancesContext.Provider>
     </OpenNavContext.Provider>
   );

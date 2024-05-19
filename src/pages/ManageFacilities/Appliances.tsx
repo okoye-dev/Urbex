@@ -1,13 +1,14 @@
-import DashboardIntro from "@/components/DashboardIntro";
 import TotalDataCard from "@/components/TotalDataCard";
+import { useTotalAppliancesDataCard } from "@/hooks/useTotalDataCard";
 import { FC } from "react";
 
 interface AppliancesProps {}
 
 const Appliances: FC<AppliancesProps> = () => {
+  const totalAppliancesDataCard = useTotalAppliancesDataCard();
   return (
     <div>
-      <TotalDataCard />
+      <TotalDataCard data={totalAppliancesDataCard} />
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { FC } from "react";
 import FacilitiesSelector from "@/pages/HomeOverview/FacilitiesSelector";
 import FacilitiesTable from "./FacilitiesTable";
-import FacilitiesTableHeader from "./FacilitiesTableHeader";
 
 interface IProps {}
 const Facilities: FC<IProps> = () => {
@@ -11,7 +10,6 @@ const Facilities: FC<IProps> = () => {
         <p className="font-bold text-lg">Facilities</p>
         <FacilitiesSelector />
       </header>
-      <FacilitiesTableHeader />
       <FacilitiesTable />
     </span>
   );

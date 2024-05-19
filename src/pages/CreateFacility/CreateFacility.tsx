@@ -1,5 +1,5 @@
 import { FC } from "react";
-import FacilitiesAndMaintenance from "../HomeOverview/FacilitiesAndMaintenance";
+import FacilitiesAndMaintenance from "../../components/TotalDataCard";
 import { FacilityForm } from "@/pages/CreateFacility/FacilityForm";
 
 interface IProps {}

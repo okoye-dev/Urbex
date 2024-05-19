@@ -3,6 +3,7 @@ import Layout from "@/pages/Layout";
 import Home from "@/pages/HomeOverview/HomeOverview";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import CreateFacility from "@/pages/CreateFacility/CreateFacility";
+import ManageFacilities from "./ManageFacilities/ManageFacilities";
 
 interface IProps {}
 
@@ -17,6 +18,7 @@ const Dashboard: FC<IProps> = () => {
       <Layout>
         {activeNav == "Home Overview" && <Home />}
         {activeNav == "Create Facility" && <CreateFacility />}
+        {activeNav == "Manage Facilities" && <ManageFacilities />}
       </Layout>
     </ActiveNavContext.Provider>
   );

@@ -1,21 +1,21 @@
-import { useFacilitiesAndMaintenance } from "@/pages/HomeOverview/hooks/useFacilitiesAndMaintenance";
+import { useTotalFacilitiesDataCard } from "@/hooks/useTotalDataCard";
 import { FC } from "react";
 
-interface IProps {}
-interface IFacilitiesAndMaintenance {
+interface ITotalDataCardProps {}
+interface ITotalDataCard {
   title: string;
   value: number;
   color: string;
 }
 
-const FacilitiesAndMaintenance: FC<IProps> = () => {
-  const facilitiesAndMaintenance: IFacilitiesAndMaintenance[] =
-    useFacilitiesAndMaintenance();
+const TotalDataCard: FC<ITotalDataCardProps> = () => {
+  const totalFacilitiesDataCard: ITotalDataCard[] =
+    useTotalFacilitiesDataCard();
 
   return (
     <div className="px-6 mt-8 mb-6 text-sm">
       <section className="font-semibold flex bg-white rounded-lg">
-        {facilitiesAndMaintenance.map((item, index) => {
+        {totalFacilitiesDataCard.map((item, index) => {
           return (
             <div
               key={index}
@@ -44,7 +44,7 @@ const FacilitiesAndMaintenance: FC<IProps> = () => {
       </section>
 
       <section className="font-semibold lg:hidden flex flex-wrap bg-white rounded-lg justify-center p-6 gap-3">
-        {facilitiesAndMaintenance.map((item, index) => {
+        {totalFacilitiesDataCard.map((item, index) => {
           return (
             <div
               key={index}
@@ -75,4 +75,4 @@ const FacilitiesAndMaintenance: FC<IProps> = () => {
   );
 };
 
-export default FacilitiesAndMaintenance;
+export default TotalDataCard;

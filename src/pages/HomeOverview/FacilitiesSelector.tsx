@@ -1,6 +1,6 @@
 import Selector from "@/components/Selector";
 import { FC } from "react";
-import { useFacilitiesSelector } from "@/pages/HomeOverview/useFacilitiesSelector";
+import { useFacilitiesSelector } from "@/pages/HomeOverview/hooks/useFacilitiesSelector";
 
 interface IProps {}
 

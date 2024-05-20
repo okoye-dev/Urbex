@@ -11,20 +11,22 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-interface IProps {}
+interface IProps {
+  title: string;
+}
 
-const MaintenanceEnd: FC<IProps> = () => {
+const DatePicker: FC<IProps> = ({ title }: IProps) => {
   const [date, setDate] = useState<Date>();
 
   return (
-    <div className="text-xs font-semibold gap-1 flex flex-col w-full">
-      Maintenance Start
+    <div className="text-sm font-semibold gap-2 flex flex-col w-full">
+      {title}
       <Popover>
         <PopoverTrigger asChild>
           <Button
             variant={"calendar"}
             className={cn(
-              "justify-start text-left font-normal text-xs py-4 rounded-lg",
+              "justify-start text-left font-normal text-sm py-4 rounded-lg",
               !date && "text-muted-foreground"
             )}
           >
@@ -45,4 +47,4 @@ const MaintenanceEnd: FC<IProps> = () => {
   );
 };
 
-export default MaintenanceEnd;
+export default DatePicker;

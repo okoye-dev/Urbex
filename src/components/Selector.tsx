@@ -10,6 +10,7 @@ import { FC } from "react";
 import newestLeft from "@/assets/newest-left.svg";
 
 interface SelectorProps {
+  blue?: boolean;
   borderLeft?: boolean;
   fitContent?: boolean;
   notRoundedFully?: boolean;
@@ -22,6 +23,7 @@ interface SelectorProps {
 }
 
 const Selector: FC<SelectorProps> = ({
+  blue = false,
   borderLeft = false,
   fitContent = true,
   notRoundedFully = false,
@@ -47,7 +49,9 @@ const Selector: FC<SelectorProps> = ({
         </span>
       </SelectTrigger>
 
-      <SelectContent className="font-quicksand">
+      <SelectContent
+        className={`font-quicksand ${blue && "bg-blue text-white"}`}
+      >
         {options.map((item, index) => (
           <SelectItem key={index} value={item.val}>
             {item.label}

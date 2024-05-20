@@ -12,7 +12,7 @@ const PopUp: FC<PopupProps> = ({ children }: PopupProps) => {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full h-full bg-blue/20 backdrop-blur-sm justify-center items-center z-30 ${
+      className={`fixed top-0 left-0 w-full h-full bg-blue/20 backdrop-blur-sm justify-center items-start z-50 overflow-y-scroll ${
         isPopUp ? "flex" : isAddAssetPopUp ? "flex" : "hidden"
       }`}
     >

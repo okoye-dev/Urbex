@@ -11,7 +11,6 @@ import { AppliancesContext } from "@/contexts/AppliancesContext";
 import TotalDataCard from "@/components/TotalDataCard";
 import { useTotalFacilitiesDataCard } from "@/hooks/useTotalDataCard";
 import { EditAppliancePopUpContext } from "@/contexts/EditAppliancePopUpContext";
-import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
 
 interface IProps {}
 
@@ -26,20 +25,12 @@ const ManageFacilities: FC<IProps> = () => {
   const togglePopUp = () => {
     setIsPopUp(!isPopUp);
   };
-  const [isAddAssetPopUp, setIsAddAssetPopUp] = useState(false);
-  const toggleAddAssetPopUp = () => {
-    setIsAddAssetPopUp(!isAddAssetPopUp);
-  };
 
   return (
     <PageNumberContext.Provider value={{ pageNumber, setPageNumber }}>
       {isAppliancesOpen ? (
         <EditAppliancePopUpContext.Provider value={{ isPopUp, togglePopUp }}>
-          <AddAssetPopUpContext.Provider
-            value={{ isAddAssetPopUp, toggleAddAssetPopUp }}
-          >
-            <Appliances />
-          </AddAssetPopUpContext.Provider>
+          <Appliances />
         </EditAppliancePopUpContext.Provider>
       ) : (
         <>

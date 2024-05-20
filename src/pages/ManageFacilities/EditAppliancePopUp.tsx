@@ -1,22 +1,21 @@
 import PopUp from "@/components/PopUp";
 import { Button } from "@/components/ui/button";
-import { PopUpContext } from "@/contexts/EditAppliancePopUpContext";
+import { EditAppliancePopUpContext } from "@/contexts/EditAppliancePopUpContext";
 import { FC, useContext } from "react";
 import bin from "@/assets/bin.svg";
 import Selector from "@/components/Selector";
 import { useManageFacilitiesSelector } from "@/pages/ManageFacilities/hooks/useManageFacilitiesSelector";
-import MaintenanceStartAndEnd from "./MaintenanceStart";
 import MaintenanceStart from "./MaintenanceStart";
 import MaintenanceEnd from "./MaintenanceEnd";
 
 interface IProps {}
 
 const EditAppliancePopUp: FC<IProps> = () => {
-  const { togglePopUp } = useContext(PopUpContext);
+  const { togglePopUp } = useContext(EditAppliancePopUpContext);
   const { options, placeholder } = useManageFacilitiesSelector();
   return (
     <PopUp>
-      <div className="bg-white rounded-lg p-6 flex flex-col justify-center items-center gap-3 w-1/2">
+      <div className="bg-white rounded-lg p-6 flex flex-col justify-center items-center gap-3 w-4/5 md:w-1/2">
         <header className="flex justify-between items-center text-xl font-bold tracking-tight w-full">
           Street Light
           <div

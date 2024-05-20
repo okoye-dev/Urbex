@@ -1,5 +1,5 @@
 import editImg from "@/assets/edit.svg";
-import { PopUpContext } from "@/contexts/EditAppliancePopUpContext";
+import { EditAppliancePopUpContext } from "@/contexts/EditAppliancePopUpContext";
 import { useContext } from "react";
 
 interface IProps {
@@ -7,7 +7,7 @@ interface IProps {
 }
 
 export const UpToDate = ({ edit = false }: IProps) => {
-  const { togglePopUp } = useContext(PopUpContext);
+  const { togglePopUp } = useContext(EditAppliancePopUpContext);
   return (
     <div className="flex justify-center items-center">
       <div className="py-1 px-3 mr-1 flex justify-center items-center text-nowrap text-xs rounded-full bg-green text-white text-center">
@@ -26,7 +26,7 @@ export const UpToDate = ({ edit = false }: IProps) => {
 };
 
 export const Ongoing = ({ edit = false }: IProps) => {
-  const { togglePopUp } = useContext(PopUpContext);
+  const { togglePopUp } = useContext(EditAppliancePopUpContext);
   return (
     <div className="flex justify-center items-center">
       <div className="py-1 px-3 mr-1 flex justify-center items-center text-nowrap text-xs rounded-full bg-orange text-black">
@@ -45,7 +45,7 @@ export const Ongoing = ({ edit = false }: IProps) => {
 };
 
 export const Pending = ({ edit = false }: IProps) => {
-  const { togglePopUp } = useContext(PopUpContext);
+  const { togglePopUp } = useContext(EditAppliancePopUpContext);
   return (
     <div className="flex justify-center items-center">
       <div className="py-1 px-3 mr-1 flex justify-center items-center text-nowrap text-xs rounded-full bg-red text-white">

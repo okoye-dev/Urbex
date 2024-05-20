@@ -4,6 +4,7 @@ import addstaff from "@/assets/add-staff.svg";
 import GreetingCard from "./GreetingCard";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import { ActiveAppliancesContext } from "@/contexts/ActiveAppliancesContext";
+import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
 
 interface DashboardIntroProps {
   isAppliances?: boolean;
@@ -13,6 +14,7 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
 }: DashboardIntroProps) => {
   const { activeNav } = useContext(ActiveNavContext);
   const { activeAppliance } = useContext(ActiveAppliancesContext);
+  const { toggleAddAssetPopUp } = useContext(AddAssetPopUpContext);
 
   return (
     <div className="py-3 px-6">
@@ -30,7 +32,7 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
 
         <div className="flex gap-3">
           {isAppliances ? (
-            <Button>
+            <Button onClick={toggleAddAssetPopUp}>
               <img src={addstaff} alt="" className="pr-2" />
               Add Appliances
             </Button>

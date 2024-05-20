@@ -1,4 +1,5 @@
-import { PopUpContext } from "@/contexts/EditAppliancePopUpContext";
+import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
+import { EditAppliancePopUpContext } from "@/contexts/EditAppliancePopUpContext";
 import { FC, ReactNode, useContext } from "react";
 
 interface PopupProps {
@@ -6,12 +7,13 @@ interface PopupProps {
 }
 
 const PopUp: FC<PopupProps> = ({ children }: PopupProps) => {
-  const { isPopUp } = useContext(PopUpContext);
+  const { isPopUp } = useContext(EditAppliancePopUpContext);
+  const { isAddAssetPopUp } = useContext(AddAssetPopUpContext);
 
   return (
     <div
       className={`fixed top-0 left-0 w-full h-full bg-blue/20 backdrop-blur-sm justify-center items-center z-30 ${
-        isPopUp ? "flex" : "hidden"
+        isPopUp ? "flex" : isAddAssetPopUp ? "flex" : "hidden"
       }`}
     >
       {children}

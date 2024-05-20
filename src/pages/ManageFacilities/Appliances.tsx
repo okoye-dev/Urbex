@@ -1,6 +1,6 @@
 import TotalDataCard from "@/components/TotalDataCard";
 import { useTotalAppliancesDataCard } from "@/hooks/useTotalDataCard";
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect } from "react";
 import PieChartAndHours from "@/pages/ManageFacilities/PieChartAndHours";
 import { DataTable } from "@/components/DataTable";
 import useAppliancesData from "./hooks/useAppliancesData";
@@ -9,8 +9,9 @@ import SearchBar from "@/components/SearchBar";
 import Selector from "@/components/Selector";
 import { useManageFacilitiesSelector } from "@/pages/ManageFacilities/hooks/useManageFacilitiesSelector";
 import { EditAppliancePopUpContext } from "@/contexts/EditAppliancePopUpContext";
-import PopUp from "@/components/PopUp";
 import EditAppliancePopUp from "./EditAppliancePopUp";
+import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
+import AddAssetPopUp from "./AddAssetPopUp";
 
 interface AppliancesProps {}
 
@@ -19,10 +20,16 @@ const Appliances: FC<AppliancesProps> = () => {
   const { placeholder, options } = useManageFacilitiesSelector();
   const data = useAppliancesData();
   const { isPopUp } = useContext(EditAppliancePopUpContext);
+  const { isAddAssetPopUp } = useContext(AddAssetPopUpContext);
+
+  useEffect(() => {
+    console.log("context: " + isAddAssetPopUp);
+  }, [isAddAssetPopUp]);
 
   return (
     <div>
       {isPopUp && <EditAppliancePopUp />}
+      {isAddAssetPopUp && <AddAssetPopUp />}
       <TotalDataCard data={totalAppliancesDataCard} />
       <PieChartAndHours />
       <div className="p-10 rounded-lg bg-white mx-6 my-8 flex flex-col gap-3">

@@ -5,6 +5,7 @@ import { OpenNavContext } from "@/contexts/OpenNavContext";
 import DashboardIntro from "@/components/DashboardIntro";
 import { AppliancesContext } from "@/contexts/AppliancesContext";
 import { ActiveAppliancesContext } from "@/contexts/ActiveAppliancesContext";
+import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -23,6 +24,10 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const openActiveAppliance = (instance: string) => {
     setActiveAppliance(instance);
   };
+  const [isAddAssetPopUp, setIsAddAssetPopUp] = useState(false);
+  const toggleAddAssetPopUp = () => {
+    setIsAddAssetPopUp(!isAddAssetPopUp);
+  };
 
   return (
     <OpenNavContext.Provider value={{ navOpen, toggleNav }}>
@@ -35,16 +40,20 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
         <ActiveAppliancesContext.Provider
           value={{ activeAppliance, openActiveAppliance }}
         >
-          <div className="font-quicksand">
-            <Header />
-            <section className="flex min-h-screen">
-              <SideNav />
-              <section className="sm:mt-12 w-full bg-lightgray overflow-hidden">
-                <DashboardIntro isAppliances={isAppliancesOpen} />
-                {children}
+          <AddAssetPopUpContext.Provider
+            value={{ isAddAssetPopUp, toggleAddAssetPopUp }}
+          >
+            <div className="font-quicksand">
+              <Header />
+              <section className="flex min-h-screen">
+                <SideNav />
+                <section className="sm:mt-12 w-full bg-lightgray overflow-hidden">
+                  <DashboardIntro isAppliances={isAppliancesOpen} />
+                  {children}
+                </section>
               </section>
-            </section>
-          </div>
+            </div>
+          </AddAssetPopUpContext.Provider>
         </ActiveAppliancesContext.Provider>
       </AppliancesContext.Provider>
     </OpenNavContext.Provider>

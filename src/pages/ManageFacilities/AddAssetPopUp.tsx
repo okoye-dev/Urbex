@@ -1,6 +1,6 @@
 import PopUp from "@/components/PopUp";
 import { FC, useContext } from "react";
-import { useMaintenanceScheduleSelector } from "./hooks/useMaintenanceScheduleSelector";
+import { useMaintenanceScheduleSelector } from "../../hooks/useMaintenanceScheduleSelector";
 import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
 import Selector from "@/components/Selector";
 import { useManageFacilitiesSelector } from "./hooks/useManageFacilitiesSelector";

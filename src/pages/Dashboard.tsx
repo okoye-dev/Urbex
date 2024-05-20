@@ -4,6 +4,7 @@ import Home from "@/pages/HomeOverview/Layout";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import CreateFacility from "@/pages/CreateFacility/Layout";
 import ManageFacilities from "./ManageFacilities/Layout";
+import AlertAndNotifications from "./AlertAndNotifications/Layout";
 
 interface IProps {}
 
@@ -18,6 +19,7 @@ const Dashboard: FC<IProps> = () => {
         {activeNav == "Home Overview" && <Home />}
         {activeNav == "Create Facility" && <CreateFacility />}
         {activeNav == "Manage Facilities" && <ManageFacilities />}
+        {activeNav == "Alert and Notifications" && <AlertAndNotifications />}
       </Layout>
     </ActiveNavContext.Provider>
   );

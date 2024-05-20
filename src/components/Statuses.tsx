@@ -10,7 +10,7 @@ export const UpToDate = ({ edit = false }: IProps) => {
   const { togglePopUp } = useContext(EditAppliancePopUpContext);
   return (
     <div className="flex justify-center items-center">
-      <div className="py-1 px-3 mr-1 flex justify-center items-center text-nowrap text-xs rounded-full bg-green text-white text-center">
+      <div className="py-1 w-20 mr-1 flex justify-center items-center text-nowrap text-xs rounded-full bg-green text-white text-center">
         Up to date
       </div>
       {edit && (
@@ -29,7 +29,7 @@ export const Ongoing = ({ edit = false }: IProps) => {
   const { togglePopUp } = useContext(EditAppliancePopUpContext);
   return (
     <div className="flex justify-center items-center">
-      <div className="py-1 px-3 mr-1 flex justify-center items-center text-nowrap text-xs rounded-full bg-orange text-black">
+      <div className="py-1 w-20 mr-1 flex justify-center items-center text-nowrap text-xs rounded-full bg-orange text-black">
         Ongoing
       </div>
       {edit && (
@@ -48,7 +48,7 @@ export const Pending = ({ edit = false }: IProps) => {
   const { togglePopUp } = useContext(EditAppliancePopUpContext);
   return (
     <div className="flex justify-center items-center">
-      <div className="py-1 px-3 mr-1 flex justify-center items-center text-nowrap text-xs rounded-full bg-red text-white">
+      <div className="py-1 w-20 mr-1 flex justify-center items-center text-nowrap text-xs rounded-full bg-red text-white">
         Pending
       </div>
       {edit && (

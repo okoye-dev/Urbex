@@ -21,7 +21,7 @@ const AlertCard: FC<AlertCardProps> = ({
 }: AlertCardProps) => {
   return (
     <div className="flex items-start justify-between border-b-2 border-blue/10 py-4 w-full gap-8">
-      <section className="flex items-start gap-4 md:gap-8">
+      <section className="flex items-start gap-4">
         <img src={cancel} alt="close" className="cursor-pointer w-[20px]" />
 
         <div className="flex flex-col gap-2 text-xs">

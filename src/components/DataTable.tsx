@@ -67,8 +67,8 @@ export function DataTable<TData, TValue>({
                   return (
                     <TableHead
                       className={`${
-                        id == 0 ? "border-none" : " border-l-4"
-                      } bg-slate-100 border-white`}
+                        id == 0 ? "border-none" : "border-l-4"
+                      } bg-slate-100 border-white text-xs lg:text-sm`}
                       key={header.id}
                     >
                       {header.isPlaceholder
@@ -95,7 +95,7 @@ export function DataTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell className="min-w-32" key={cell.id}>
+                    <TableCell className="md:min-w-32" key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

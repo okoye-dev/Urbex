@@ -24,3 +24,13 @@ export const useTotalAppliancesDataCard = () => {
   ];
   return totalAppliancesDataCard;
 };
+
+export const useTotalStaffDataCard = () => {
+  const totalStaffDataCard: TotalDataProps[] = [
+    { title: "Total Staff", value: 120, color: "blue" },
+    { title: "Active", value: 120, color: "red" },
+    { title: "Inactive", value: 0, color: "green" },
+    { title: "Clocked In", value: 82, color: "blue" },
+  ];
+  return totalStaffDataCard;
+};

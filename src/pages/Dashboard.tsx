@@ -5,6 +5,7 @@ import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import CreateFacility from "@/pages/CreateFacility/Layout";
 import ManageFacilities from "./ManageFacilities/Layout";
 import AlertAndNotifications from "./AlertAndNotifications/Layout";
+import AddStaffOrUser from "./AddStaffOrUser/Layout";
 
 interface IProps {}
 
@@ -20,6 +21,7 @@ const Dashboard: FC<IProps> = () => {
         {activeNav == "Create Facility" && <CreateFacility />}
         {activeNav == "Manage Facilities" && <ManageFacilities />}
         {activeNav == "Alert and Notifications" && <AlertAndNotifications />}
+        {activeNav == "Add Staff/User" && <AddStaffOrUser />}
       </Layout>
     </ActiveNavContext.Provider>
   );

@@ -15,7 +15,7 @@ const Header: FC<IProps> = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="flex justify-between sm:justify-end bg-blue h-12 py-2 px-3 static sm:fixed sm:left-0 sm:w-full z-50">
+    <header className="flex justify-between sm:justify-end bg-blue h-12 py-2 px-3 static sm:fixed sm:left-0 sm:w-full z-50 shadow-lg">
       <IoIosMenu
         onClick={toggleNav}
         className={`${

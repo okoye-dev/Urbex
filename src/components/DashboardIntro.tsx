@@ -5,6 +5,7 @@ import GreetingCard from "./GreetingCard";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import { ActiveAppliancesContext } from "@/contexts/ActiveAppliancesContext";
 import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
+import { AddStaffOrUserContext } from "@/contexts/AddStaffOrUserContext";
 
 interface DashboardIntroProps {
   isAppliances?: boolean;
@@ -12,9 +13,17 @@ interface DashboardIntroProps {
 const DashboardIntro: FC<DashboardIntroProps> = ({
   isAppliances = false,
 }: DashboardIntroProps) => {
-  const { activeNav } = useContext(ActiveNavContext);
+  const { activeNav, makeActive } = useContext(ActiveNavContext);
   const { activeAppliance } = useContext(ActiveAppliancesContext);
   const { toggleAddAssetPopUp } = useContext(AddAssetPopUpContext);
+  const { toggleAddStaffPopUp } = useContext(AddStaffOrUserContext);
+
+  const goToAddStaffOrUser = () => {
+    if (activeNav !== "Add Staff/User") {
+      makeActive("Add Staff/User");
+    }
+    toggleAddStaffPopUp();
+  };
 
   return (
     <div className="py-3 px-6">
@@ -37,7 +46,7 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
               Add Appliances
             </Button>
           ) : (
-            <Button>
+            <Button onClick={goToAddStaffOrUser}>
               <img src={addstaff} alt="" className="pr-2" />
               Add Staff/User
             </Button>

@@ -22,7 +22,7 @@ const AddAssetPopUp: FC<IProps> = () => {
 
         <section className="text-sm flex flex-col gap-2 w-full font-semibold">
           Status
-          <div className="w-full border border-blue/20 rounded-lg py-2 px-4 text-sm focus-within:outline outline-[1px] outline-blue/50">
+          <div className="w-full border border-blue/20 rounded-lg py-2 px-4 text-xs focus-within:outline outline-[1px] outline-blue/50">
             <input
               className="w-full h-full focus:outline-none"
               placeholder="Name of Asset"

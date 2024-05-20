@@ -6,6 +6,7 @@ import DashboardIntro from "@/components/DashboardIntro";
 import { AppliancesContext } from "@/contexts/AppliancesContext";
 import { ActiveAppliancesContext } from "@/contexts/ActiveAppliancesContext";
 import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
+import { AddStaffOrUserContext } from "@/contexts/AddStaffOrUserContext";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -28,6 +29,10 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const toggleAddAssetPopUp = () => {
     setIsAddAssetPopUp(!isAddAssetPopUp);
   };
+  const [isAddStaffPopUp, setIsAddStaffPopUp] = useState(false);
+  const toggleAddStaffPopUp = () => {
+    setIsAddStaffPopUp(!isAddStaffPopUp);
+  };
 
   return (
     <OpenNavContext.Provider value={{ navOpen, toggleNav }}>
@@ -43,16 +48,20 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
           <AddAssetPopUpContext.Provider
             value={{ isAddAssetPopUp, toggleAddAssetPopUp }}
           >
-            <div className="font-quicksand">
-              <Header />
-              <section className="flex min-h-screen">
-                <SideNav />
-                <section className="sm:mt-12 w-full bg-lightgray overflow-hidden">
-                  <DashboardIntro isAppliances={isAppliancesOpen} />
-                  {children}
+            <AddStaffOrUserContext.Provider
+              value={{ isAddStaffPopUp, toggleAddStaffPopUp }}
+            >
+              <div className="font-quicksand">
+                <Header />
+                <section className="flex min-h-screen">
+                  <SideNav />
+                  <section className="sm:mt-12 w-full bg-lightgray overflow-hidden">
+                    <DashboardIntro isAppliances={isAppliancesOpen} />
+                    {children}
+                  </section>
                 </section>
-              </section>
-            </div>
+              </div>
+            </AddStaffOrUserContext.Provider>
           </AddAssetPopUpContext.Provider>
         </ActiveAppliancesContext.Provider>
       </AppliancesContext.Provider>

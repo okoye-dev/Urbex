@@ -8,7 +8,7 @@ import { columns } from "@/pages/ManageFacilities//AppliancesColumns";
 import SearchBar from "@/components/SearchBar";
 import Selector from "@/components/Selector";
 import { useManageFacilitiesSelector } from "@/pages/ManageFacilities/hooks/useManageFacilitiesSelector";
-import { PopUpContext } from "@/contexts/EditAppliancePopUpContext";
+import { EditAppliancePopUpContext } from "@/contexts/EditAppliancePopUpContext";
 import PopUp from "@/components/PopUp";
 import EditAppliancePopUp from "./EditAppliancePopUp";
 
@@ -18,7 +18,7 @@ const Appliances: FC<AppliancesProps> = () => {
   const totalAppliancesDataCard = useTotalAppliancesDataCard();
   const { placeholder, options } = useManageFacilitiesSelector();
   const data = useAppliancesData();
-  const { isPopUp, togglePopUp } = useContext(PopUpContext);
+  const { isPopUp } = useContext(EditAppliancePopUpContext);
 
   return (
     <div>

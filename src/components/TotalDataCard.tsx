@@ -11,7 +11,7 @@ const TotalDataCard: FC<{ data: TotalDataProps[] }> = ({ data }) => {
               key={index}
               className="hidden lg:flex flex-col justify-center gap-3 py-5 w-full lg:px-8 px-4 relative"
             >
-              <p className="font-medium text-black/80">{item.title}</p>
+              <p className="font-semibold text-black/80">{item.title}</p>
               <p
                 className={`text-2xl ${
                   item.color == "red"
@@ -40,7 +40,7 @@ const TotalDataCard: FC<{ data: TotalDataProps[] }> = ({ data }) => {
               key={index}
               className="sm:static flex flex-col justify-center gap-3 py-4 px-4 md:px-8 relative w-[45%] text-xs ipad:text-sm md:text-base bg-lightgray rounded-lg"
             >
-              <p className="font-medium text-black/80">{item.title}</p>
+              <p className="font-semibold text-black/80">{item.title}</p>
               <p
                 className={`text-2xl ${
                   item.color == "red"

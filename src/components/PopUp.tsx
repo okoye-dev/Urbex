@@ -1,16 +1,17 @@
-import { FC, ReactNode } from "react";
+import { PopUpContext } from "@/contexts/EditAppliancePopUpContext";
+import { FC, ReactNode, useContext } from "react";
 
 interface PopupProps {
-  openMe?: boolean;
-  closeMe?: () => void;
   children?: ReactNode;
 }
 
-const Popup: FC<PopupProps> = ({ openMe, children }: PopupProps) => {
+const PopUp: FC<PopupProps> = ({ children }: PopupProps) => {
+  const { isPopUp } = useContext(PopUpContext);
+
   return (
     <div
-      className={`z-10 absolute w-screen h-screen bg-white/50 backdrop-blur-sm justify-center items-center ${
-        openMe ? "flex" : "hidden"
+      className={`fixed top-0 left-0 w-full h-full bg-blue/20 backdrop-blur-sm justify-center items-center z-30 ${
+        isPopUp ? "flex" : "hidden"
       }`}
     >
       {children}
@@ -18,4 +19,4 @@ const Popup: FC<PopupProps> = ({ openMe, children }: PopupProps) => {
   );
 };
 
-export default Popup;
+export default PopUp;

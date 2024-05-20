@@ -19,6 +19,7 @@ import { DataTablePageButtons } from "@/components/DataTablePageButtons";
 import { useContext } from "react";
 import { AppliancesContext } from "@/contexts/AppliancesContext";
 import { ActiveAppliancesContext } from "@/contexts/ActiveAppliancesContext";
+import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 
 export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -35,17 +36,24 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
+
   const currentPage = table.getState().pagination.pageIndex;
   const numberOfPages = table.getPageCount();
-  const { toggleAppliances } = useContext(AppliancesContext);
+
+  const { isAppliancesOpen, toggleAppliances } = useContext(AppliancesContext);
   const { openActiveAppliance } = useContext(ActiveAppliancesContext);
+  const { activeNav } = useContext(ActiveNavContext);
 
   const handleClick = (row: any) => {
     const name = row.original.nameOfFacility;
     const type = row.original.type;
     const state = `${name} (${type})`;
-    openActiveAppliance(state);
-    toggleAppliances();
+    if (activeNav == "Manage Facilities") {
+      if (!isAppliancesOpen) {
+        openActiveAppliance(state);
+        toggleAppliances();
+      }
+    }
   };
 
   return (
@@ -82,12 +90,12 @@ export function DataTable<TData, TValue>({
                   onClick={() => {
                     handleClick(row);
                   }}
-                  className="cursor-pointer"
+                  className="cursor-pointer text-xs lg:text-sm"
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell className="min-w-32" key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

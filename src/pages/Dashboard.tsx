@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 import Layout from "@/pages/Layout";
-import Home from "@/pages/HomeOverview/HomeOverview";
+import Home from "@/pages/HomeOverview/Layout";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
-import CreateFacility from "@/pages/CreateFacility/CreateFacility";
-import ManageFacilities from "./ManageFacilities/ManageFacilities";
+import CreateFacility from "@/pages/CreateFacility/Layout";
+import ManageFacilities from "./ManageFacilities/Layout";
 
 interface IProps {}
 

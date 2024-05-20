@@ -1,6 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { ReactNode } from "react";
-import { Ongoing, Pending, UpToDate } from "./FacilityStatuses";
+import { Ongoing, Pending, UpToDate } from "../../components/Statuses";
 
 export interface FacilityProps {
   nameOfFacility: string;

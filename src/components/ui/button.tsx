@@ -12,13 +12,15 @@ const buttonVariants = cva(
         default: "bg-black text-primary-foreground hover:bg-black/90 font-light",
         white:
           "bg-white text-blue-foreground hover:bg-black/5 border-2 border-black/20 text-black",
-        blue: "bg-blue, text-black, hover:bg-black/10",
+        blue: "bg-blue text-white hover:bg-blue/90",
+        lightBlue: "font-semibold bg-blue/30 text-blue hover:bg-blue/50",
         outline:
           "border border-input bg-blue hover:bg-blue/90 ---hover:text-accent-foreground text-white",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        calendar: "bg-white text-black border border-black/20 hover:bg-blue/10 font-light w-full",
       },
       size: {
         default: "h-8 px-4 py-1",

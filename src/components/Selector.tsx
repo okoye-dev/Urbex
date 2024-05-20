@@ -10,6 +10,8 @@ import { FC } from "react";
 import newestLeft from "@/assets/newest-left.svg";
 
 interface SelectorProps {
+  borderLeft?: boolean;
+  fitContent?: boolean;
   notRoundedFully?: boolean;
   icon?: boolean;
   placeholder: string | number | undefined;
@@ -20,6 +22,8 @@ interface SelectorProps {
 }
 
 const Selector: FC<SelectorProps> = ({
+  borderLeft = false,
+  fitContent = true,
   notRoundedFully = false,
   icon = true,
   placeholder,
@@ -28,13 +32,16 @@ const Selector: FC<SelectorProps> = ({
   return (
     <Select>
       <SelectTrigger
-        className={`w-fit ${
+        className={` ${fitContent ? "w-fit" : "w-full text-xs"} ${
           notRoundedFully
-            ? "rounded-xl border"
+            ? "rounded-lg border"
             : "rounded-full border-2 border-[#B3B3FF]"
         }`}
       >
         {icon && <img src={newestLeft} alt="" className="px-1" width={25} />}
+        {borderLeft && (
+          <div className="absolute -translate-x-1 w-[2px] h-5 bg-blue/20"></div>
+        )}
         <span className="px-1">
           <SelectValue placeholder={placeholder} />
         </span>

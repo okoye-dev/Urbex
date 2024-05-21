@@ -1,6 +1,6 @@
 import TotalDataCard from "@/components/TotalDataCard";
 import { useTotalAppliancesDataCard } from "@/hooks/useTotalDataCard";
-import { FC, useContext, useEffect } from "react";
+import { FC, useContext } from "react";
 import PieChartAndHours from "@/pages/ManageFacilities/PieChartAndHours";
 import { DataTable } from "@/components/DataTable";
 import useAppliancesData from "./hooks/useAppliancesData";

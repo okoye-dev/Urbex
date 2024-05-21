@@ -12,7 +12,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const MyCalendar: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [events, setEvents] = useState<{ date: Date; title: string }[]>([]);
+  const [events] = useState<{ date: Date; title: string }[]>([]);
 
   const firstDayOfMonth = startOfMonth(currentDate);
   const lastDayOfMonth = endOfMonth(currentDate);

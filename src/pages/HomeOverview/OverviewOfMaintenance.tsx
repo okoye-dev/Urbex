@@ -19,15 +19,18 @@ const OverviewOfMaintenance: FC<IProps> = () => {
             <MaintenanceCard key={index} {...item} />
           ))}
         </div>
+
         <div className="gap-3 flex flex-col w-[32%] sm:w-3/5">
           {maintenanceMetricsTwo.map((item, index) => (
             <MaintenanceCard key={index} {...item} />
           ))}
         </div>
-        <span className="flex sm:hidden">
+
+        <span className="flex sm:opacity-0 sm:absolute sm:-z-10">
           <MaintenenceCompletionStatus />
         </span>
       </section>
+
       <span className="hidden sm:flex justify-center py-3">
         <MaintenenceCompletionStatus />
       </span>

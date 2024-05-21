@@ -1,29 +1,24 @@
 import { FC } from "react";
-import purplesemicircle from "@/assets/overview-of-maintenance/purple-semicircle.svg";
+import "react-circular-progressbar/dist/styles.css";
+import GradientCircularProgressbar from "./GradientCircularProgessbar";
 
 interface IProps {}
 
 const MaintenenceCompletionStatus: FC<IProps> = () => {
+  const percentage = 70;
+
   return (
     <div className="bg-blue rounded-lg p-3 flex flex-col h-[16rem] justify-between items-center relative sm:w-full">
       <span className="flex justify-center md:gap-7 lg:gap-12 sm:justify-between lg:text-xs md:text-[0.65rem] sm:text-[0.65rem] font-medium sm:w-full">
         <p className="font-quicksand p-2 sm:px-2 sm:py-1 rounded-lg bg-white text-black text-nowrap">
           4 Bedroom Flat
         </p>
-        <p className="p-2 sm:px-2 sm:py-1 rounded-lg bg-white text-black text-nowrap">
+        <p className="font-quicksand p-2 sm:px-2 sm:py-1 rounded-lg bg-white text-black text-nowrap">
           2 Bedroom Duplex
         </p>
       </span>
 
-      <img
-        src={purplesemicircle}
-        alt=""
-        className="absolute top-1/3 -translate-x-[13px] sm:-translate-y-6 -translate-y-5"
-      />
-
-      <span className="text-center text-white/50 text-[0.65rem] rounded-full border-2 border-white/50 p-[12px] aspect-square flex flex-col justify-center items-center font-quicksand">
-        <p className="text-white font-bold text-xl font-syne">60%</p> Completed
-      </span>
+      <GradientCircularProgressbar percentage={percentage} />
 
       <div className="flex justify-center items-center text-[0.5rem] gap-6">
         <span className="flex flex-col">

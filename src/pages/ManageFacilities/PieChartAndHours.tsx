@@ -38,6 +38,7 @@ const PieChartAndHours: FC<IProps> = () => {
           ))}
         </div>
       </section>
+      
       <HoursOverview />
     </div>
   );

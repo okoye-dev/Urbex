@@ -7,7 +7,7 @@ interface SearchBarProps {
 
 const SearchBar: FC<SearchBarProps> = ({ className }: SearchBarProps) => {
   return (
-    <div className="relative w-3/5">
+    <div className="relative w-full ipad:w-3/5">
       <img
         src={search}
         alt="search"

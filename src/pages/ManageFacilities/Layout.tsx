@@ -37,7 +37,7 @@ const ManageFacilities: FC<IProps> = () => {
           <TotalDataCard data={data} />
 
           <div className="px-6 flex flex-col gap-3 bg-white rounded-lg mx-6 my-8 py-4">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-wrap gap-3 justify-between items-center">
               <SearchBar />
               <Selector placeholder={placeholder} options={options} />
             </div>

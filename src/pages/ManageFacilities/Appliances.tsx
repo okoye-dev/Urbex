@@ -22,10 +22,6 @@ const Appliances: FC<AppliancesProps> = () => {
   const { isPopUp } = useContext(EditAppliancePopUpContext);
   const { isAddAssetPopUp } = useContext(AddAssetPopUpContext);
 
-  useEffect(() => {
-    console.log("context: " + isAddAssetPopUp);
-  }, [isAddAssetPopUp]);
-
   return (
     <div>
       {isPopUp && <EditAppliancePopUp />}
@@ -33,7 +29,7 @@ const Appliances: FC<AppliancesProps> = () => {
       <TotalDataCard data={totalAppliancesDataCard} />
       <PieChartAndHours />
       <div className="p-10 rounded-lg bg-white mx-6 my-8 flex flex-col gap-3">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-wrap sm:gap-3 justify-between items-center">
           <SearchBar />
           <Selector placeholder={placeholder} options={options} />
         </div>

@@ -36,7 +36,7 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
           >
             {activeNav} {isAppliances && "/Appliances"}
           </h1>
-          {isAppliances && <h1 className="font-bold">{activeAppliance}</h1>}
+          {isAppliances && <h1 className="font-bold ipad:pb-0 pb-2">{activeAppliance}</h1>}
         </div>
 
         <div className="flex gap-3">
@@ -46,12 +46,14 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
               Add Appliances
             </Button>
           ) : (
-            <Button onClick={goToAddStaffOrUser}>
-              <img src={addstaff} alt="" className="pr-2" />
-              Add Staff/User
-            </Button>
+            <>
+              <Button onClick={goToAddStaffOrUser}>
+                <img src={addstaff} alt="" className="pr-2" />
+                Add Staff/User
+              </Button>
+              <Button variant={"white"}>Manager POV</Button>
+            </>
           )}
-          {!isAppliances && <Button variant={"white"}>Manager POV</Button>}
         </div>
       </header>
 

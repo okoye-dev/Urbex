@@ -36,19 +36,24 @@ export function FacilityForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
     console.log(values);
+    form.reset();
   }
-  
+
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 font-semibold">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-4 font-semibold"
+      >
         <FormField
           control={form.control}
           name="nameOfFacility"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-base font-semibold">Name of facility</FormLabel>
+              <FormLabel className="text-base font-semibold">
+                Name of facility
+              </FormLabel>
               <FormControl>
                 <Input placeholder="Name of facility" {...field} />
               </FormControl>
@@ -61,7 +66,9 @@ export function FacilityForm() {
           name="typeOfFacility"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-base font-semibold">Type of facility</FormLabel>
+              <FormLabel className="text-base font-semibold">
+                Type of facility
+              </FormLabel>
               <FormControl>
                 <Input placeholder="Type of facility" {...field} />
               </FormControl>
@@ -74,7 +81,9 @@ export function FacilityForm() {
           name="location"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-base font-semibold">Location</FormLabel>
+              <FormLabel className="text-base font-semibold">
+                Location
+              </FormLabel>
               <FormControl>
                 <Input placeholder="Where do you stay?" {...field} />
               </FormControl>

@@ -25,7 +25,7 @@ export const DataTablePageButtons: FC<PageButtonsProps> = ({
   const options = [{ val: "10", label: "10" }];
 
   return (
-    <div className="flex items-center justify-end space-x-2 text-sm font-medium">
+    <div className="flex items-center justify-end space-x-2 text-sm font-medium flex-wrap gap-1 ipad:gap-0">
       <Button
         variant="white"
         size="sm"

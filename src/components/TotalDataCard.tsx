@@ -38,7 +38,7 @@ const TotalDataCard: FC<{ data: TotalDataProps[] }> = ({ data }) => {
           return (
             <div
               key={index}
-              className="sm:static flex flex-col justify-center gap-3 py-4 px-4 md:px-8 relative w-[45%] text-xs ipad:text-sm md:text-base bg-lightgray rounded-lg"
+              className="sm:static flex flex-col justify-end gap-3 py-4 px-4 md:px-8 relative w-[45%] text-xs ipad:text-sm md:text-base bg-lightgray rounded-lg"
             >
               <p className="font-semibold text-black/80">{item.title}</p>
               <p
@@ -52,6 +52,7 @@ const TotalDataCard: FC<{ data: TotalDataProps[] }> = ({ data }) => {
               >
                 {item.value}
               </p>
+              
               <span
                 className={`w-[2px] h-4/5 top-[10%] bg-lightgray absolute right-2 ${
                   index == 3 && "hidden"

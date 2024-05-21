@@ -34,7 +34,7 @@ const Selector: FC<SelectorProps> = ({
   return (
     <Select>
       <SelectTrigger
-        className={` ${fitContent ? "w-fit" : "w-full text-xs"} ${
+        className={`font-quicksand font-semibold text-blue/70 ${fitContent ? "w-fit" : "w-full text-xs"} ${
           notRoundedFully
             ? "rounded-lg border"
             : "rounded-full border-2 border-[#B3B3FF]"

@@ -25,7 +25,7 @@ const AddStaffOrUserPopUp: FC<IProps> = () => {
       <div className="w-full h-full justify-center items-center flex">
         <div className="bg-white rounded-lg p-6 flex flex-col justify-center items-center gap-5 w-4/5 md:w-1/2 lg:w-2/5 my-10">
           <section className="flex justify-between items-center w-full">
-            <h1 className="font-bold text-start w-full text-2xl">Add Asset</h1>
+            <h1 className="font-bold text-start w-full text-2xl">Add New Staff/User</h1>
             <div
               onClick={toggleAddStaffPopUp}
               className="w-10 flex justify-center items-center p-1 cursor-pointer"

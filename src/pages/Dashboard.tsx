@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Layout from "@/pages/Layout";
 import Home from "@/pages/HomeOverview/Layout";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
@@ -14,6 +14,10 @@ const Dashboard: FC<IProps> = () => {
   const makeActive = (title: string) => {
     setActiveNav(title);
   };
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [activeNav]);
+
   return (
     <ActiveNavContext.Provider value={{ activeNav, makeActive }}>
       <Layout>

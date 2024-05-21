@@ -10,6 +10,7 @@ import { FC } from "react";
 import newestLeft from "@/assets/newest-left.svg";
 
 interface SelectorProps {
+  handleChange?: (value: string | number) => void;
   blue?: boolean;
   borderLeft?: boolean;
   fitContent?: boolean;
@@ -23,6 +24,7 @@ interface SelectorProps {
 }
 
 const Selector: FC<SelectorProps> = ({
+  handleChange,
   blue = false,
   borderLeft = false,
   fitContent = true,
@@ -32,9 +34,11 @@ const Selector: FC<SelectorProps> = ({
   options,
 }: SelectorProps) => {
   return (
-    <Select>
+    <Select onValueChange={handleChange}>
       <SelectTrigger
-        className={`font-quicksand font-semibold text-blue/70 ${fitContent ? "w-fit" : "w-full text-xs"} ${
+        className={`font-quicksand font-semibold text-blue/70 ${
+          fitContent ? "w-fit" : "w-full text-sm"
+        } ${
           notRoundedFully
             ? "rounded-lg border"
             : "rounded-full border-2 border-[#B3B3FF]"
@@ -53,7 +57,7 @@ const Selector: FC<SelectorProps> = ({
         className={`font-quicksand ${blue && "bg-blue text-white"}`}
       >
         {options.map((item, index) => (
-          <SelectItem key={index} value={item.val}>
+          <SelectItem className="text-sm font-semibold text-black/70" key={index} value={item.label}>
             {item.label}
           </SelectItem>
         ))}

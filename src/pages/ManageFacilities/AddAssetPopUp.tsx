@@ -22,9 +22,9 @@ const AddAssetPopUp: FC<IProps> = () => {
 
         <section className="text-sm flex flex-col gap-2 w-full font-semibold">
           Status
-          <div className="w-full border border-blue/20 rounded-lg py-2 px-4 text-xs focus-within:outline outline-[1px] outline-blue/50">
+          <div className="w-full border border-blue/20 rounded-lg py-2 px-4 focus-within:outline outline-[1px] outline-blue/50">
             <input
-              className="w-full h-full focus:outline-none"
+              className="w-full h-full focus:outline-none placeholder:text-blue/70"
               placeholder="Name of Asset"
             />
           </div>
@@ -65,7 +65,7 @@ const AddAssetPopUp: FC<IProps> = () => {
 
         <div className="w-full border border-blue/20 rounded-lg py-2 px-4 text-sm h-28 focus-within:outline outline-[1px] outline-blue/50">
           <textarea
-            className="w-full h-full focus:outline-none"
+            className="w-full h-full focus:outline-none text-sm font-medium placeholder:text-blue/70"
             placeholder="Description"
           />
         </div>

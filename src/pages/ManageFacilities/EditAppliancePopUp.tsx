@@ -1,7 +1,7 @@
 import PopUp from "@/components/PopUp";
 import { Button } from "@/components/ui/button";
 import { EditAppliancePopUpContext } from "@/contexts/EditAppliancePopUpContext";
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import bin from "@/assets/bin.svg";
 import Selector from "@/components/Selector";
 import { useManageFacilitiesSelector } from "@/pages/ManageFacilities/hooks/useManageFacilitiesSelector";
@@ -12,6 +12,14 @@ interface IProps {}
 const EditAppliancePopUp: FC<IProps> = () => {
   const { togglePopUp } = useContext(EditAppliancePopUpContext);
   const { options, placeholder } = useManageFacilitiesSelector();
+  const [status, setStatus] = useState("");
+  const handleStatusChange = (value: string | number) => {
+    setStatus(value.toString());
+  };
+  useEffect(() => {
+    console.log(status);
+  }, [status]);
+
   return (
     <PopUp>
       <section className="h-full w-full flex justify-center items-center">
@@ -29,6 +37,7 @@ const EditAppliancePopUp: FC<IProps> = () => {
           <section className="text-sm flex flex-col gap-2 w-full font-semibold">
             Status
             <Selector
+              handleChange={handleStatusChange}
               borderLeft={true}
               notRoundedFully={true}
               fitContent={false}
@@ -45,7 +54,7 @@ const EditAppliancePopUp: FC<IProps> = () => {
 
           <div className="w-full border border-blue/20 rounded-lg py-2 px-4 text-sm h-28 focus-within:outline outline-[1px] outline-blue/50">
             <textarea
-              className="w-full h-full focus:outline-none"
+              className="w-full h-full focus:outline-none text-sm font-medium placeholder:text-blue/70"
               placeholder="Description"
             />
           </div>

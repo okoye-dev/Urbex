@@ -38,6 +38,7 @@ const EditAppliancePopUp: FC<IProps> = () => {
             Status
             <Selector
               handleChange={handleStatusChange}
+              blue={true}
               borderLeft={true}
               notRoundedFully={true}
               fitContent={false}

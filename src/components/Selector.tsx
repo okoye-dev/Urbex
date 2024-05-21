@@ -54,10 +54,10 @@ const Selector: FC<SelectorProps> = ({
       </SelectTrigger>
 
       <SelectContent
-        className={`font-quicksand ${blue && "bg-blue text-white"}`}
+        className={`font-quicksand ${blue && "bg-blue text-white rounded-lg"}`}
       >
         {options.map((item, index) => (
-          <SelectItem className="text-sm font-semibold text-black/70" key={index} value={item.label}>
+          <SelectItem className="text-sm focus:bg-white/10 text-white/70 font-medium focus:text-white transition-all duration-300 ease-in-out" key={index} value={item.label}>
             {item.label}
           </SelectItem>
         ))}

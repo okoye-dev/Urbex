@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import {
   format,
   startOfMonth,
@@ -9,10 +9,14 @@ import {
   isSameDay,
 } from "date-fns";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
 
-const MyCalendar: React.FC = () => {
+interface CalendarProps {
+  onClick: (instance: string) => void;
+}
+const MyCalendar: FC<CalendarProps> = ({ onClick }: CalendarProps) => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [events] = useState<{ date: Date; title: string }[]>([]);
+  const [events, setEvents] = useState<{ date: Date; title: string }[]>([]);
 
   const firstDayOfMonth = startOfMonth(currentDate);
   const lastDayOfMonth = endOfMonth(currentDate);
@@ -41,8 +45,26 @@ const MyCalendar: React.FC = () => {
     setCurrentDate((prevDate) => addMonths(prevDate, 1));
   };
 
+  const { isReportsCardOpen, toggleIsReportCardOpen } = useContext(
+    IsReportsCardOpenContext
+  );
+
+  const handleClick = async (date: Date) => {
+    const day = format(date, "dd MMMM");
+    onClick(day);
+    if (!isReportsCardOpen) {
+      toggleIsReportCardOpen();
+    }
+  };
+
+  // TODO: get reports
+  useEffect(() => {
+    setEvents([{ date: new Date(), title: "4 reports" }]);
+    console.log(events);
+  }, []);
+
   return (
-    <div className="w-full overflow-x-scroll">
+    <div className="w-full overflow-x-scroll px-6 py-2">
       <div className="p-8 bg-white shadow rounded-lg min-w-[700px]">
         <section className="flex justify-between items-center mb-4 text-2xl font-semibold">
           <div className="flex items-center gap-2">
@@ -75,15 +97,19 @@ const MyCalendar: React.FC = () => {
           {daysInMonth.map((day, index) => (
             <div
               key={index}
-              className={`px-4 min-h-[60px] py-2 flex flex-col items-start text-blue/70 border border-blue/5`}
+              className={`px-4 min-h-[60px] py-2 flex flex-col items-start text-blue/70 border border-blue/5 relative`}
             >
               {format(day, "d")}
+
               {events
                 .filter((event) => isSameDay(event.date, day))
                 .map((event, i) => (
                   <div
+                    onClick={() => {
+                      handleClick(day);
+                    }}
                     key={i}
-                    className="bg-blue-100 text-blue-800 p-1 mt-1 rounded"
+                    className="absolute top-1/4 font-semibold text-[0.65rem] text-center w-fit cursor-pointer bg-blue-100 text-red p-1 mt-1 rounded"
                   >
                     {event.title}
                   </div>

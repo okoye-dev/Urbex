@@ -7,6 +7,8 @@ import { AppliancesContext } from "@/contexts/AppliancesContext";
 import { ActiveAppliancesContext } from "@/contexts/ActiveAppliancesContext";
 import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
 import { AddStaffOrUserContext } from "@/contexts/AddStaffOrUserContext";
+import { ReportsCardContext } from "@/contexts/ReportsCardContext";
+import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -33,6 +35,14 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const toggleAddStaffPopUp = () => {
     setIsAddStaffPopUp(!isAddStaffPopUp);
   };
+  const [activeReportsCard, setActiveReportsCard] = useState("");
+  const makeActiveReportsCard = (instance: string) => {
+    setActiveReportsCard(instance);
+  };
+  const [isReportsCardOpen, setIsReportsCard] = useState(false);
+  const toggleIsReportCardOpen = () => {
+    setIsReportsCard(!isReportsCardOpen);
+  };
 
   return (
     <OpenNavContext.Provider value={{ navOpen, toggleNav }}>
@@ -51,16 +61,24 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
             <AddStaffOrUserContext.Provider
               value={{ isAddStaffPopUp, toggleAddStaffPopUp }}
             >
-              <div className="font-quicksand">
-                <Header />
-                <section className="flex min-h-screen">
-                  <SideNav />
-                  <section className="sm:mt-12 w-full bg-lightgray overflow-hidden">
-                    <DashboardIntro isAppliances={isAppliancesOpen} />
-                    {children}
-                  </section>
-                </section>
-              </div>
+              <ReportsCardContext.Provider
+                value={{ activeReportsCard, makeActiveReportsCard }}
+              >
+                <IsReportsCardOpenContext.Provider
+                  value={{ isReportsCardOpen, toggleIsReportCardOpen }}
+                >
+                  <div className="font-quicksand">
+                    <Header />
+                    <section className="flex min-h-screen">
+                      <SideNav />
+                      <section className="sm:mt-12 w-full bg-lightgray overflow-hidden">
+                        <DashboardIntro isAppliances={isAppliancesOpen} />
+                        {children}
+                      </section>
+                    </section>
+                  </div>
+                </IsReportsCardOpenContext.Provider>
+              </ReportsCardContext.Provider>
             </AddStaffOrUserContext.Provider>
           </AddAssetPopUpContext.Provider>
         </ActiveAppliancesContext.Provider>

@@ -3,6 +3,7 @@ import { FC, useContext } from "react";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import { OpenNavContext } from "@/contexts/OpenNavContext";
 import { AppliancesContext } from "@/contexts/AppliancesContext";
+import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
 
 interface SideNavProps {}
 
@@ -11,10 +12,16 @@ const SideNav: FC<SideNavProps> = ({}: SideNavProps) => {
   const { activeNav, makeActive } = useContext(ActiveNavContext);
   const { navOpen, toggleNav } = useContext(OpenNavContext);
   const { isAppliancesOpen, toggleAppliances } = useContext(AppliancesContext);
+  const { isReportsCardOpen, toggleIsReportCardOpen } = useContext(
+    IsReportsCardOpenContext
+  );
   const selectNavItem = () => {
     if (isAppliancesOpen) {
       toggleAppliances();
+    } else if (isReportsCardOpen) {
+      toggleIsReportCardOpen();
     }
+
     const timeout = setTimeout(() => {
       toggleNav();
     }, 100);

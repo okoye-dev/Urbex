@@ -62,3 +62,18 @@ export const Pending = ({ edit = false }: IProps) => {
     </div>
   );
 };
+
+export const Unattended = () => {
+  return (
+    <div className="py-1 w-24 mr-1 flex justify-center items-center text-nowrap text-xs rounded-lg bg-red text-white">
+      Unattended
+    </div>
+  );
+};
+export const Attended = () => {
+  return (
+    <div className="py-1 w-24 mr-1 flex justify-center items-center text-nowrap text-xs rounded-lg bg-green text-white">
+      Attended
+    </div>
+  );
+};

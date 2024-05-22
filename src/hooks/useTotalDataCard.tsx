@@ -34,3 +34,13 @@ export const useTotalStaffDataCard = () => {
   ];
   return totalStaffDataCard;
 };
+
+export const useTotalReportsDataCard = () => {
+  const totalReportsDataCard: TotalDataProps[] = [
+    { title: "Total Reports", value: 70, color: "blue" },
+    { title: "Attended Reports", value: 45, color: "red" },
+    { title: "Unattended Reports", value: 25, color: "green" },
+    { title: "New Reports This Month", value: 8, color: "blue" },
+  ];
+  return totalReportsDataCard;
+};

@@ -6,6 +6,8 @@ import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import { ActiveAppliancesContext } from "@/contexts/ActiveAppliancesContext";
 import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
 import { AddStaffOrUserContext } from "@/contexts/AddStaffOrUserContext";
+import { ReportsCardContext } from "@/contexts/ReportsCardContext";
+import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
 
 interface DashboardIntroProps {
   isAppliances?: boolean;
@@ -16,13 +18,18 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
   const { activeNav, makeActive } = useContext(ActiveNavContext);
   const { activeAppliance } = useContext(ActiveAppliancesContext);
   const { toggleAddAssetPopUp } = useContext(AddAssetPopUpContext);
-  const { toggleAddStaffPopUp } = useContext(AddStaffOrUserContext);
+  const { toggleAddStaffPopUp, isAddStaffPopUp } = useContext(
+    AddStaffOrUserContext
+  );
+  const { activeReportsCard } = useContext(ReportsCardContext);
+  const { isReportsCardOpen, toggleIsReportCardOpen } = useContext(
+    IsReportsCardOpenContext
+  );
 
   const goToAddStaffOrUser = () => {
-    if (activeNav !== "Add Staff/User") {
-      makeActive("Add Staff/User");
-    }
-    toggleAddStaffPopUp();
+    activeNav !== "Add Staff/User" && makeActive("Add Staff/User");
+    isReportsCardOpen && toggleIsReportCardOpen();
+    !isAddStaffPopUp && toggleAddStaffPopUp();
   };
 
   return (
@@ -31,12 +38,21 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
         <div className="flex flex-col items-start justify-center tracking-tight">
           <h1
             className={`${
-              isAppliances ? "text-blue/30 text-xs" : "ipad:text-lg py-2"
+              isAppliances || isReportsCardOpen
+                ? "text-blue/30 text-xs"
+                : "ipad:text-lg py-2"
             } font-bold`}
           >
             {activeNav} {isAppliances && "/Appliances"}
           </h1>
-          {isAppliances && <h1 className="font-bold ipad:pb-0 pb-2">{activeAppliance}</h1>}
+          {isAppliances && (
+            <h1 className="font-bold ipad:pb-0 pb-2">{activeAppliance}</h1>
+          )}
+          {isReportsCardOpen && (
+            <h1 className="font-bold ipad:pb-0 pb-2">
+              {activeReportsCard} Reports
+            </h1>
+          )}
         </div>
 
         <div className="flex gap-3">

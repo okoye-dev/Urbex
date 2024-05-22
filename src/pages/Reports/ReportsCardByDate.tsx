@@ -1,9 +1,11 @@
 import SearchBar from "@/components/SearchBar";
-import { FC, useState } from "react";
-import DatePicker from "../ManageFacilities/DatePicker";
+import { FC, useContext, useState } from "react";
 import { DataTable } from "@/components/DataTable";
 import useReportsByDateTable from "./hooks/useReportsByDateTable";
 import { columns } from "./ReportsColumns";
+import DatePicker from "../ManageFacilities/DatePicker";
+import { ReportsPopUpContext } from "@/contexts/ReportsPopUpContext";
+import ReportsPopUp from "./ReportsPopUp";
 
 interface IProps {}
 
@@ -11,11 +13,13 @@ const ReportsCardByDate: FC<IProps> = () => {
   const filters = ["All", "Unattended", "Attended"];
   const [activeFilter, setActiveFilter] = useState(0);
   const data = useReportsByDateTable();
+  const { isReportsPopUpOpen } =
+    useContext(ReportsPopUpContext);
 
   return (
     <div className="px-6 py-8 overflow-scroll">
-      <section className="w-full px-6 py-4 bg-white rounded-lg flex flex-col gap-3 min-w-[700px]">
-        <section className="flex justify-between items-center flex-col ipad:flex-row gap-3 sm:items-start">
+      <section className="w-full px-6 py-4 bg-white rounded-lg flex flex-col gap-4 lg:gap-5 min-w-[700px]">
+        <section className="flex justify-between items-center flex-col ipad:flex-row gap-4 lg:gap-5 sm:items-start">
           <div className="flex w-fit text-sm overflow-hidden">
             {filters.map((item, index) => (
               <span
@@ -44,8 +48,10 @@ const ReportsCardByDate: FC<IProps> = () => {
         </section>
 
         <SearchBar />
-        <DataTable data={data} columns={columns} />
+        <DataTable data={data} columns={columns} isReports={true} />
       </section>
+
+      {isReportsPopUpOpen && <ReportsPopUp />}
     </div>
   );
 };

@@ -10,6 +10,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { IoIosArrowDown } from "react-icons/io";
 
 interface IProps {
   title: string;
@@ -34,7 +35,10 @@ const DatePicker: FC<IProps> = ({ title }: IProps) => {
             {date ? (
               format(date, "PPP")
             ) : (
-              <span className="font-semibold text-blue/70">Choose date</span>
+              <span className="font-semibold text-blue/70 flex gap-1 items-center justify-between w-full">
+                Choose date
+                <IoIosArrowDown />
+              </span>
             )}
           </Button>
         </PopoverTrigger>

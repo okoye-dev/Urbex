@@ -1,6 +1,7 @@
 import editImg from "@/assets/edit.svg";
 import { EditAppliancePopUpContext } from "@/contexts/EditAppliancePopUpContext";
 import { useContext } from "react";
+import dots from "@/assets/dots.svg";
 
 interface IProps {
   edit?: boolean;
@@ -65,15 +66,22 @@ export const Pending = ({ edit = false }: IProps) => {
 
 export const Unattended = () => {
   return (
-    <div className="py-1 w-24 mr-1 flex justify-center items-center text-nowrap text-xs rounded-lg bg-red text-white">
-      Unattended
+    <div className="flex justify-between gap-2">
+      <span className="py-1 w-24 mr-1 flex justify-center items-center text-nowrap text-xs rounded-lg bg-red text-white">
+        Unattended
+      </span>
+      <img src={dots} alt="info" height={20} />
     </div>
   );
 };
+
 export const Attended = () => {
   return (
-    <div className="py-1 w-24 mr-1 flex justify-center items-center text-nowrap text-xs rounded-lg bg-green text-white">
-      Attended
+    <div className="flex justify-between gap-2">
+      <span className="py-1 w-24 mr-1 flex justify-center items-center text-nowrap text-xs rounded-lg bg-green text-white">
+        Attended
+      </span>
+      <img src={dots} alt="info" height={20} />
     </div>
   );
 };

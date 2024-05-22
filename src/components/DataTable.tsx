@@ -82,7 +82,9 @@ export function DataTable<TData, TValue>({
                   return (
                     <TableHead
                       className={`${id == 0 ? "border-none" : "border-l-4"} ${
-                        isReports && id == 0 && "lg:min-w-[200px] min-w-[150px]"
+                        isReports && id == 0 && "lg:min-w-[200px] min-w-[120px]"
+                      } ${
+                        isReports && id == 2 && "lg:min-w-[200px] min-w-[200px]"
                       } bg-slate-100 border-white text-xs lg:text-sm overflow-ellipsis`}
                       key={header.id}
                     >

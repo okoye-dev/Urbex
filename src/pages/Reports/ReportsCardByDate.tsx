@@ -13,12 +13,11 @@ const ReportsCardByDate: FC<IProps> = () => {
   const filters = ["All", "Unattended", "Attended"];
   const [activeFilter, setActiveFilter] = useState(0);
   const data = useReportsByDateTable();
-  const { isReportsPopUpOpen } =
-    useContext(ReportsPopUpContext);
+  const { isReportsPopUpOpen } = useContext(ReportsPopUpContext);
 
   return (
-    <div className="px-6 py-8 overflow-scroll">
-      <section className="w-full px-6 py-4 bg-white rounded-lg flex flex-col gap-4 lg:gap-5 min-w-[700px]">
+    <div className="px-6 py-8">
+      <section className="w-full px-6 py-4 bg-white rounded-lg flex flex-col gap-4 lg:gap-5">
         <section className="flex justify-between items-center flex-col ipad:flex-row gap-4 lg:gap-5 sm:items-start">
           <div className="flex w-fit text-sm overflow-hidden">
             {filters.map((item, index) => (

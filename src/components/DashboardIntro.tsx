@@ -51,11 +51,12 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
                 : "ipad:text-lg py-2"
             } font-bold`}
           >
-            {activeNav}
-            {isAppliances && (
+            {isAppliances ? (
               <div className="flex gap-1">
                 <p>Manage Facilities</p> / Appliances
               </div>
+            ) : (
+              <p>{activeNav}</p>
             )}
           </h1>
           {isAppliances && (

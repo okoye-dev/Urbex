@@ -8,6 +8,7 @@ import AlertAndNotifications from "./AlertAndNotifications/Layout";
 import AddStaffOrUser from "./AddStaffOrUser/Layout";
 import Reports from "./Reports/Layout";
 import Help from "./Help/Layout";
+import Setting from "./Setting/Layout";
 
 interface IProps {}
 
@@ -29,7 +30,8 @@ const Dashboard: FC<IProps> = () => {
         {activeNav == "Alert and Notifications" && <AlertAndNotifications />}
         {activeNav == "Add Staff/User" && <AddStaffOrUser />}
         {activeNav == "Reports" && <Reports />}
-        {activeNav == "Help" && <Help />}
+        {activeNav == "Help" && <Help />}{" "}
+        {activeNav == "Setting" && <Setting />}
       </Layout>
     </ActiveNavContext.Provider>
   );

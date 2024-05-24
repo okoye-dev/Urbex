@@ -18,8 +18,8 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<Dashboard />}></Route>
-          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/dashboard" element={<Home />}></Route>
           <Route path="/dashboard/home" element={<Home />}></Route>
           <Route
             path="/dashboard/create-facility"

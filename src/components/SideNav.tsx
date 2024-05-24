@@ -1,5 +1,5 @@
 import { useNavItems } from "@/hooks/useNavItems";
-import { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 import { OpenNavContext } from "@/contexts/OpenNavContext";
 import { useNavigate } from "react-router-dom";
 import { AppliancesContext } from "@/contexts/AppliancesContext";
@@ -7,13 +7,13 @@ import { ActiveAppliancesContext } from "@/contexts/ActiveAppliancesContext";
 import { ActiveStaffReportContext } from "@/contexts/ActiveStaffReportContext";
 import { ReportsCardContext } from "@/contexts/ReportsCardContext";
 import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
+import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 
 interface SideNavProps {}
 
 const SideNav: FC<SideNavProps> = ({}: SideNavProps) => {
   const navigate = useNavigate();
   const navItems = useNavItems();
-  const [activeNavItem, setActiveNavItem] = useState("");
   const { navOpen, toggleNav } = useContext(OpenNavContext);
   const { isAppliancesOpen, toggleAppliances } = useContext(AppliancesContext);
   const { openActiveAppliance } = useContext(ActiveAppliancesContext);
@@ -22,6 +22,7 @@ const SideNav: FC<SideNavProps> = ({}: SideNavProps) => {
   const { isReportsCardOpen, toggleIsReportCardOpen } = useContext(
     IsReportsCardOpenContext
   );
+  const { activeNav, makeActive } = useContext(ActiveNavContext);
 
   const resetAllSubPageStates = () => {
     isAppliancesOpen ? toggleAppliances() : null;
@@ -33,7 +34,7 @@ const SideNav: FC<SideNavProps> = ({}: SideNavProps) => {
 
   const goToPage = (item: any) => {
     resetAllSubPageStates();
-    setActiveNavItem(item.title);
+    makeActive(item.title);
 
     const timeout = setTimeout(() => {
       window.scrollTo({ behavior: "smooth", top: 0 });
@@ -57,11 +58,11 @@ const SideNav: FC<SideNavProps> = ({}: SideNavProps) => {
           }}
           key={index}
           className={`${
-            activeNavItem == item.title && "bg-white text-black font-extrabold"
+            activeNav == item.title && "bg-white text-black font-extrabold"
           } h-14 w-60 pl-4 flex items-center gap-3 text-xs cursor-pointer transition-colors duration-400 ease-in-out`}
         >
           <img
-            src={activeNavItem == item.title ? item.iconFocus : item.icon}
+            src={activeNav == item.title ? item.iconFocus : item.icon}
             alt={item.title}
           />
           <p>{item.title}</p>

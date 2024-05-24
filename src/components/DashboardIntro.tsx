@@ -9,7 +9,7 @@ import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
 import { AddStaffOrUserContext } from "@/contexts/AddStaffOrUserContext";
 import { ReportsCardContext } from "@/contexts/ReportsCardContext";
 import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface DashboardIntroProps {
   isAppliances?: boolean;
@@ -32,13 +32,13 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
     IsReportsCardOpenContext
   );
   const isHelpSectionOpen = activeNav == "Help";
-
+  const navigate = useNavigate();
   const goToAddStaffOrUser = () => {
     activeNav !== "Add Staff/User" && makeActive("Add Staff/User");
     isReportsCardOpen && toggleIsReportCardOpen();
+    navigate("/dashboard/add-staff-or-user", { state: "Add Staff/User" });
     !isAddStaffPopUp && toggleAddStaffPopUp();
   };
-  const location = useLocation();
 
   return (
     <div className="py-3 px-6">
@@ -51,7 +51,7 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
                 : "ipad:text-lg py-2"
             } font-bold`}
           >
-            {location.state}
+            {activeNav}
             {isAppliances && (
               <div className="flex gap-1">
                 <p>Manage Facilities</p> / Appliances

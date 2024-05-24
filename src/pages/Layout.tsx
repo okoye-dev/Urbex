@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import SideNav from "@/components/SideNav";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { OpenNavContext } from "@/contexts/OpenNavContext";
 import DashboardIntro from "@/components/DashboardIntro";
 import { AppliancesContext } from "@/contexts/AppliancesContext";
@@ -11,6 +11,7 @@ import { ReportsCardContext } from "@/contexts/ReportsCardContext";
 import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import { EditAppliancePopUpContext } from "@/contexts/EditAppliancePopUpContext";
+import { useNavigate } from "react-router-dom";
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -56,6 +57,14 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const togglePopUp = () => {
     setIsPopUp(!isPopUp);
   };
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!activeNav) {
+      makeActive("Home Overview");
+      navigate("/", { replace: true });
+    }
+  });
 
   return (
     <OpenNavContext.Provider value={{ navOpen, toggleNav }}>

@@ -29,14 +29,14 @@ const InputField: FC<IProps> = ({
           isProfileFormField
             ? "rounded-lg py-0 bg-blue/[7%] px-0 border-none text-xs"
             : "rounded-lg py-2"
-        } w-full border border-blue/20 px-4 focus-within:outline outline-[1px] outline-blue/50 text-sm relative`}
+        } w-full border border-blue/20 px-4focus-within:outline outline-[1px] outline-blue/50 text-sm relative`}
       >
         <input
           type={type}
           onChange={onChange}
           className={`w-full h-full focus:outline-none placeholder:text-blue/70 ${
             isProfileFormField &&
-            "font-bold text-black py-[6px] px-4 rounded-lg bg-blue/5"
+            "font-bold text-black py-[6px] rounded-lg bg-blue/5"
           }`}
           placeholder={placeholder}
         />

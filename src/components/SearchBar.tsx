@@ -3,7 +3,7 @@ import search from "@/assets/search.svg";
 
 interface SearchBarProps {
   className?: string;
-  children: any;
+  children?: any;
   placeholder?: string;
   lightVersion?: boolean;
   fullWidth?: boolean;

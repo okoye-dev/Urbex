@@ -36,7 +36,7 @@ const InputField: FC<IProps> = ({
           onChange={onChange}
           className={`w-full h-full focus:outline-none placeholder:text-blue/70 ${
             isProfileFormField &&
-            "font-bold text-black py-[6px] rounded-lg bg-blue/5"
+            "font-bold text-black py-[6px] placeholder:pl-4 rounded-lg bg-blue/5"
           }`}
           placeholder={placeholder}
         />

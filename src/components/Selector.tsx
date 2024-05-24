@@ -11,6 +11,7 @@ import newestLeft from "@/assets/newest-left.svg";
 
 interface SelectorProps {
   handleChange?: (value: string | number) => void;
+  isProfileFormField?: boolean;
   blue?: boolean;
   borderLeft?: boolean;
   fitContent?: boolean;
@@ -25,6 +26,7 @@ interface SelectorProps {
 
 const Selector: FC<SelectorProps> = ({
   handleChange,
+  isProfileFormField = false,
   blue = false,
   borderLeft = false,
   fitContent = true,
@@ -41,6 +43,8 @@ const Selector: FC<SelectorProps> = ({
         } ${
           notRoundedFully
             ? "rounded-lg border"
+            : isProfileFormField
+            ? "bg-blue/10 rounded-lg border-none h-7"
             : "rounded-full border-2 border-[#B3B3FF]"
         }`}
       >
@@ -48,13 +52,13 @@ const Selector: FC<SelectorProps> = ({
         {borderLeft && (
           <div className="absolute -translate-x-1 w-[2px] h-5 bg-blue/20"></div>
         )}
-        <span className="px-1">
+        <span className={`px-1 ${isProfileFormField && "font-bold text-xs text-black"}`}>
           <SelectValue placeholder={placeholder} />
         </span>
       </SelectTrigger>
 
       <SelectContent
-        className={`font-quicksand ${blue && "bg-blue text-white rounded-lg"}`}
+        className={`font-quicksand ${blue && "bg-blue text-white rounded-lg font-bold"}`}
       >
         {options.map((item, index) => (
           <SelectItem

@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import SideNav from "@/components/SideNav";
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { OpenNavContext } from "@/contexts/OpenNavContext";
 import DashboardIntro from "@/components/DashboardIntro";
 import { AppliancesContext } from "@/contexts/AppliancesContext";
@@ -9,6 +9,7 @@ import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
 import { AddStaffOrUserContext } from "@/contexts/AddStaffOrUserContext";
 import { ReportsCardContext } from "@/contexts/ReportsCardContext";
 import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
+import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -19,6 +20,10 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const toggleNav = () => {
     setNavOpen(!navOpen);
   };
+  const { activeNav } = useContext(ActiveNavContext);
+  const isHelpSectionOpen = activeNav == "Help";
+  const isSettingSectionOpen = activeNav == "Setting";
+
   const [isAppliancesOpen, setIsAppliancesOpen] = useState(false);
   const toggleAppliances = () => {
     setIsAppliancesOpen(!isAppliancesOpen);
@@ -72,7 +77,11 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                     <section className="flex min-h-screen">
                       <SideNav />
                       <section className="sm:mt-12 w-full bg-lightgray overflow-hidden">
-                        <DashboardIntro isAppliances={isAppliancesOpen} />
+                        <DashboardIntro
+                          isAppliances={isAppliancesOpen}
+                          isHelpSection={isHelpSectionOpen}
+                          isSettingSection={isSettingSectionOpen}
+                        />
                         {children}
                       </section>
                     </section>

@@ -1,6 +1,7 @@
 import { FC, useContext } from "react";
 import { Button } from "@/components/ui/button";
 import addstaff from "@/assets/add-staff.svg";
+import support from "@/assets/support.svg";
 import GreetingCard from "./GreetingCard";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import { ActiveAppliancesContext } from "@/contexts/ActiveAppliancesContext";
@@ -11,9 +12,13 @@ import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
 
 interface DashboardIntroProps {
   isAppliances?: boolean;
+  isHelpSection?: boolean;
+  isSettingSection?: boolean;
 }
 const DashboardIntro: FC<DashboardIntroProps> = ({
   isAppliances = false,
+  isHelpSection = false,
+  isSettingSection = false,
 }: DashboardIntroProps) => {
   const { activeNav, makeActive } = useContext(ActiveNavContext);
   const { activeAppliance } = useContext(ActiveAppliancesContext);
@@ -25,6 +30,7 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
   const { isReportsCardOpen, toggleIsReportCardOpen } = useContext(
     IsReportsCardOpenContext
   );
+  const isHelpSectionOpen = activeNav == "Help";
 
   const goToAddStaffOrUser = () => {
     activeNav !== "Add Staff/User" && makeActive("Add Staff/User");
@@ -61,6 +67,13 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
               <img src={addstaff} alt="" className="pr-2" />
               Add Appliances
             </Button>
+          ) : isHelpSection ? (
+            <Button className="flex gap-1">
+              <img src={support} alt="" className="pr-2" />
+              Support
+            </Button>
+          ) : isSettingSection ? (
+            <></>
           ) : (
             <>
               <Button onClick={goToAddStaffOrUser}>
@@ -73,7 +86,7 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
         </div>
       </header>
 
-      <GreetingCard />
+      {!isHelpSectionOpen && !isSettingSection && <GreetingCard />}
     </div>
   );
 };

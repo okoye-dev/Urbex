@@ -76,7 +76,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                     <Header />
                     <section className="flex min-h-screen">
                       <SideNav />
-                      <section className="sm:mt-12 w-full bg-lightgray overflow-hidden">
+                      <section className="mt-12 md:pl-60 w-full bg-lightgray overflow-hidden">
                         <DashboardIntro
                           isAppliances={isAppliancesOpen}
                           isHelpSection={isHelpSectionOpen}

@@ -33,7 +33,7 @@ const SideNav: FC<SideNavProps> = ({}: SideNavProps) => {
     <nav
       className={` ${
         navOpen ? "translate-x-0" : "sm:-translate-x-[16rem]"
-      } transition-transform duration-300 ease-in-out flex flex-col text-white bg-blue border-darkgray border-r text-nowrap fixed top-12 md:static z-20 sm:h-full`}
+      } transition-transform duration-300 ease-in-out flex flex-col text-white bg-blue border-darkgray border-r text-nowrap top-12 fixed z-20 h-full`}
     >
       {navItems.map((item, index) => (
         <div

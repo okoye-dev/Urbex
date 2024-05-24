@@ -85,7 +85,7 @@ export function FacilityForm() {
                 Location
               </FormLabel>
               <FormControl>
-                <Input placeholder="Where do you stay?" {...field} />
+                <Input placeholder="Where do you stay?" {...field} /> 
               </FormControl>
               <FormMessage />
             </FormItem>

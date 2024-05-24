@@ -8,7 +8,7 @@ interface IProps {}
 
 const Setting: FC<IProps> = () => {
   return (
-    <div className="w-full px-6 pb-6">
+    <div className="w-full px-6 pb-16">
       <h1 className="flex justify-start items-center text-lg font-bold gap-1 -mt-8 lg:-mt-6 py-3">
         Profile Details / <p className="text-blue/70 text-base">Edit Profile</p>
       </h1>

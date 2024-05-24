@@ -9,6 +9,7 @@ import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
 import { AddStaffOrUserContext } from "@/contexts/AddStaffOrUserContext";
 import { ReportsCardContext } from "@/contexts/ReportsCardContext";
 import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
+import { useLocation } from "react-router-dom";
 
 interface DashboardIntroProps {
   isAppliances?: boolean;
@@ -37,6 +38,7 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
     isReportsCardOpen && toggleIsReportCardOpen();
     !isAddStaffPopUp && toggleAddStaffPopUp();
   };
+  const location = useLocation();
 
   return (
     <div className="py-3 px-6">
@@ -49,7 +51,12 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
                 : "ipad:text-lg py-2"
             } font-bold`}
           >
-            {activeNav} {isAppliances && "/Appliances"}
+            {location.state}
+            {isAppliances && (
+              <div className="flex gap-1">
+                <p>Manage Facilities</p> / Appliances
+              </div>
+            )}
           </h1>
           {isAppliances && (
             <h1 className="font-bold ipad:pb-0 pb-2">{activeAppliance}</h1>

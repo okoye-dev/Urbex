@@ -21,35 +21,60 @@ import settingFocus from "@/assets/nav/setting-focus.svg";
 
 export const useNavItems = () => {
   const navItems = [
-    { iconFocus: homeFocus, icon: home, title: "Home Overview" },
+    {
+      iconFocus: homeFocus,
+      icon: home,
+      title: "Home Overview",
+      route: "home",
+    },
     {
       iconFocus: createFocus,
       icon: create,
       title: "Create Facility",
+      route: "create-facility",
     },
-    { iconFocus: manageFocus, icon: manage, title: "Manage Facilities" },
+    {
+      iconFocus: manageFocus,
+      icon: manage,
+      title: "Manage Facilities",
+      route: "manage-facilities",
+    },
     {
       iconFocus: attendanceFocus,
       icon: attendance,
       title: "Attendance",
+      route: "attendance",
     },
-    { iconFocus: alertFocus, icon: alert, title: "Alert and Notifications" },
+    {
+      iconFocus: alertFocus,
+      icon: alert,
+      title: "Alert and Notifications",
+      route: "alert-and-notifications",
+    },
     {
       iconFocus: procurementFocus,
       icon: procurement,
       title: "Procurement",
+      route: "procurement",
     },
-    { iconFocus: addFocus, icon: add, title: "Add Staff/User" },
+    {
+      iconFocus: addFocus,
+      icon: add,
+      title: "Add Staff/User",
+      route: "add-staff-or-user",
+    },
     {
       iconFocus: reportsFocus,
       icon: reports,
       title: "Reports",
+      route: "reports",
     },
-    { iconFocus: helpFocus, icon: help, title: "Help" },
+    { iconFocus: helpFocus, icon: help, title: "Help", route: "help" },
     {
       iconFocus: settingFocus,
       icon: setting,
       title: "Setting",
+      route: "setting",
     },
   ];
 

@@ -32,7 +32,7 @@ const SearchBar: FC<SearchBarProps> = ({
         className={`${className!} w-full min-w-40 border ${
           lightVersion
             ? "border-blue/15 placeholder:text-blue/30 rounded-xl h-10"
-            : "h-9 border-black/30 rounded-lg"
+            : "h-8 border-black/30 rounded-lg"
         } py-1 px-7 focus:outline-none text-base`}
       />
       <div className="absolute w-full">{children}</div>

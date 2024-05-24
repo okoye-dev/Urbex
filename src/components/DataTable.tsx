@@ -19,10 +19,10 @@ import { DataTablePageButtons } from "@/components/DataTablePageButtons";
 import { useContext } from "react";
 import { AppliancesContext } from "@/contexts/AppliancesContext";
 import { ActiveAppliancesContext } from "@/contexts/ActiveAppliancesContext";
-import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import { ReportsPopUpContext } from "@/contexts/ReportsPopUpContext";
 import { ActiveStaffReportContext } from "@/contexts/ActiveStaffReportContext";
 import { ReportsCardContext } from "@/contexts/ReportsCardContext";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export interface DataTableProps<TData, TValue> {
   isReports?: boolean;
@@ -45,29 +45,37 @@ export function DataTable<TData, TValue>({
   const currentPage = table.getState().pagination.pageIndex;
   const numberOfPages = table.getPageCount();
 
-  const { isAppliancesOpen, toggleAppliances } = useContext(AppliancesContext);
+  const { toggleAppliances } = useContext(AppliancesContext);
   const { openActiveAppliance } = useContext(ActiveAppliancesContext);
-  const { activeNav } = useContext(ActiveNavContext);
   const { isReportsPopUpOpen, toggleReportsPopUp } =
     useContext(ReportsPopUpContext);
   const { makeStaffActive } = useContext(ActiveStaffReportContext);
   const { activeReportsCard } = useContext(ReportsCardContext);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const handleClick = (row: any) => {
-    if (activeNav == "Manage Facilities") {
-      const name = row.original.nameOfFacility;
-      const type = row.original.type;
+    const name = row.original.nameOfFacility;
+    const type = row.original.type;
+
+    if (location.pathname == "/dashboard/manage-facilities") {
       const state = `${name} (${type})`;
-      if (!isAppliancesOpen) {
-        openActiveAppliance(state);
+      openActiveAppliance(state);
+
+      const timeout = setTimeout(() => {
+        window.scrollTo({ behavior: "smooth", top: 0 });
         toggleAppliances();
-      }
-    } else if (activeNav == "Reports") {
+
+        navigate("/dashboard/manage-facilities/appliances");
+      }, 100);
+      return () => clearTimeout(timeout);
+    } else if (location.pathname == "/dashboard/reports") {
       const staff = `${row.original.staff} - ${activeReportsCard}`;
-      if (!isReportsPopUpOpen) {
-        makeStaffActive(staff);
-        toggleReportsPopUp();
-      }
+
+      window.scrollTo({ behavior: "smooth", top: 0 });
+      !isReportsPopUpOpen && makeStaffActive(staff);
+      !isReportsPopUpOpen && toggleReportsPopUp();
     } else return;
   };
 

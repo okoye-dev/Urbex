@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import SideNav from "@/components/SideNav";
-import { FC, useContext, useState } from "react";
+import { FC, useState } from "react";
 import { OpenNavContext } from "@/contexts/OpenNavContext";
 import DashboardIntro from "@/components/DashboardIntro";
 import { AppliancesContext } from "@/contexts/AppliancesContext";
@@ -10,9 +10,10 @@ import { AddStaffOrUserContext } from "@/contexts/AddStaffOrUserContext";
 import { ReportsCardContext } from "@/contexts/ReportsCardContext";
 import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
+import { EditAppliancePopUpContext } from "@/contexts/EditAppliancePopUpContext";
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
@@ -20,7 +21,7 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const toggleNav = () => {
     setNavOpen(!navOpen);
   };
-  const { activeNav } = useContext(ActiveNavContext);
+  const [activeNav, setActiveNav] = useState("");
   const isHelpSectionOpen = activeNav == "Help";
   const isSettingSectionOpen = activeNav == "Setting";
 
@@ -48,50 +49,68 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const toggleIsReportCardOpen = () => {
     setIsReportsCard(!isReportsCardOpen);
   };
+  const makeActive = (navItem: string) => {
+    setActiveNav(navItem);
+  };
+  const [isPopUp, setIsPopUp] = useState(false);
+  const togglePopUp = () => {
+    setIsPopUp(!isPopUp);
+  };
 
   return (
     <OpenNavContext.Provider value={{ navOpen, toggleNav }}>
-      <AppliancesContext.Provider
-        value={{
-          isAppliancesOpen,
-          toggleAppliances,
-        }}
-      >
-        <ActiveAppliancesContext.Provider
-          value={{ activeAppliance, openActiveAppliance }}
+      <ActiveNavContext.Provider value={{ activeNav, makeActive }}>
+        <AppliancesContext.Provider
+          value={{
+            isAppliancesOpen,
+            toggleAppliances,
+          }}
         >
-          <AddAssetPopUpContext.Provider
-            value={{ isAddAssetPopUp, toggleAddAssetPopUp }}
+          <ActiveAppliancesContext.Provider
+            value={{ activeAppliance, openActiveAppliance }}
           >
-            <AddStaffOrUserContext.Provider
-              value={{ isAddStaffPopUp, toggleAddStaffPopUp }}
+            <AppliancesContext.Provider
+              value={{ isAppliancesOpen, toggleAppliances }}
             >
-              <ReportsCardContext.Provider
-                value={{ activeReportsCard, makeActiveReportsCard }}
+              <EditAppliancePopUpContext.Provider
+                value={{ isPopUp, togglePopUp }}
               >
-                <IsReportsCardOpenContext.Provider
-                  value={{ isReportsCardOpen, toggleIsReportCardOpen }}
+                {" "}
+                <AddAssetPopUpContext.Provider
+                  value={{ isAddAssetPopUp, toggleAddAssetPopUp }}
                 >
-                  <div className="font-quicksand">
-                    <Header />
-                    <section className="flex min-h-screen">
-                      <SideNav />
-                      <section className="mt-12 md:pl-60 w-full bg-lightgray overflow-hidden">
-                        <DashboardIntro
-                          isAppliances={isAppliancesOpen}
-                          isHelpSection={isHelpSectionOpen}
-                          isSettingSection={isSettingSectionOpen}
-                        />
-                        {children}
-                      </section>
-                    </section>
-                  </div>
-                </IsReportsCardOpenContext.Provider>
-              </ReportsCardContext.Provider>
-            </AddStaffOrUserContext.Provider>
-          </AddAssetPopUpContext.Provider>
-        </ActiveAppliancesContext.Provider>
-      </AppliancesContext.Provider>
+                  <AddStaffOrUserContext.Provider
+                    value={{ isAddStaffPopUp, toggleAddStaffPopUp }}
+                  >
+                    <ReportsCardContext.Provider
+                      value={{ activeReportsCard, makeActiveReportsCard }}
+                    >
+                      <IsReportsCardOpenContext.Provider
+                        value={{ isReportsCardOpen, toggleIsReportCardOpen }}
+                      >
+                        <div className="font-quicksand">
+                          <Header />
+                          <section className="flex min-h-screen">
+                            <SideNav />
+                            <section className="mt-12 md:pl-60 w-full bg-lightgray overflow-hidden">
+                              <DashboardIntro
+                                isAppliances={isAppliancesOpen}
+                                isHelpSection={isHelpSectionOpen}
+                                isSettingSection={isSettingSectionOpen}
+                              />
+                              {children}
+                            </section>
+                          </section>
+                        </div>
+                      </IsReportsCardOpenContext.Provider>
+                    </ReportsCardContext.Provider>
+                  </AddStaffOrUserContext.Provider>
+                </AddAssetPopUpContext.Provider>
+              </EditAppliancePopUpContext.Provider>
+            </AppliancesContext.Provider>
+          </ActiveAppliancesContext.Provider>
+        </AppliancesContext.Provider>
+      </ActiveNavContext.Provider>
     </OpenNavContext.Provider>
   );
 };

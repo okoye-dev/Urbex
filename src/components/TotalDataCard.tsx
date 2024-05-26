@@ -52,12 +52,6 @@ const TotalDataCard: FC<{ data: TotalDataProps[] }> = ({ data }) => {
               >
                 {item.value}
               </p>
-              
-              <span
-                className={`w-[2px] h-4/5 top-[10%] bg-lightgray absolute right-2 ${
-                  index == 3 && "hidden"
-                }`}
-              ></span>
             </div>
           );
         })}

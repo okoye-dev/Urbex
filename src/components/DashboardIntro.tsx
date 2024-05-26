@@ -53,9 +53,15 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
   };
 
   const goToManageFacilities = () => {
-    toggleAppliances();
+    isAppliances && toggleAppliances();
     makeActive("Manage Facilities");
     navigate("/dashboard/manage-facilities");
+  };
+
+  const goToReports = () => {
+    isReportsCardOpen && toggleIsReportCardOpen();
+    makeActive("Reports");
+    navigate("/dashboard/reports");
   };
 
   const goBack = () => {
@@ -93,7 +99,15 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
                     className={`text-blue/50 hover:text-[blue]/80 transition-all duration-300 ease-in-out`}
                   />
                 )}
-                <p>{activeNav}</p>
+                <p
+                  onClick={goToReports}
+                  className={`${
+                    isReportsCardOpen &&
+                    "hover:text-[blue]/80 transition-all duration-300 ease-in-out cursor-pointer"
+                  }`}
+                >
+                  {activeNav}
+                </p>
               </div>
             )}
           </h1>

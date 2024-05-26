@@ -9,6 +9,7 @@ import {
   isSameDay,
 } from "date-fns";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { ReportsCardContext } from "@/contexts/ReportsCardContext";
 import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
 
 interface CalendarProps {
@@ -17,6 +18,10 @@ interface CalendarProps {
 const MyCalendar: FC<CalendarProps> = ({ onClick }: CalendarProps) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [events, setEvents] = useState<{ date: Date; title: string }[]>([]);
+  const { makeActiveReportsCard } = useContext(ReportsCardContext);
+  const { isReportsCardOpen, toggleIsReportCardOpen } = useContext(
+    IsReportsCardOpenContext
+  );
 
   const firstDayOfMonth = startOfMonth(currentDate);
   const lastDayOfMonth = endOfMonth(currentDate);
@@ -45,16 +50,13 @@ const MyCalendar: FC<CalendarProps> = ({ onClick }: CalendarProps) => {
     setCurrentDate((prevDate) => addMonths(prevDate, 1));
   };
 
-  const { isReportsCardOpen, toggleIsReportCardOpen } = useContext(
-    IsReportsCardOpenContext
-  );
-
   const handleClick = async (date: Date) => {
     const day = format(date, "dd MMMM");
-    onClick(day);
-    if (!isReportsCardOpen) {
-      toggleIsReportCardOpen();
-    }
+    const dayFormattedForURL = day.replace(" ", "-");
+
+    makeActiveReportsCard(day);
+    !isReportsCardOpen && toggleIsReportCardOpen();
+    onClick(dayFormattedForURL);
   };
 
   // TODO: get reports

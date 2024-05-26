@@ -12,6 +12,8 @@ import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
 import { ActiveNavContext } from "@/contexts/ActiveNavContext";
 import { EditAppliancePopUpContext } from "@/contexts/EditAppliancePopUpContext";
 import { useNavigate } from "react-router-dom";
+import { ReportsPopUpContext } from "@/contexts/ReportsPopUpContext";
+import { ActiveStaffReportContext } from "@/contexts/ActiveStaffReportContext";
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -57,6 +59,14 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const togglePopUp = () => {
     setIsPopUp(!isPopUp);
   };
+  const [isReportsPopUpOpen, setIsReportsPopUpOpen] = useState(false);
+  const toggleReportsPopUp = () => {
+    setIsReportsPopUpOpen(!isReportsPopUpOpen);
+  };
+  const [activeStaff, setActiveStaff] = useState("");
+  const makeStaffActive = (staff: string) => {
+    setActiveStaff(staff);
+  };
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -84,7 +94,6 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
               <EditAppliancePopUpContext.Provider
                 value={{ isPopUp, togglePopUp }}
               >
-                {" "}
                 <AddAssetPopUpContext.Provider
                   value={{ isAddAssetPopUp, toggleAddAssetPopUp }}
                 >
@@ -97,20 +106,28 @@ const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
                       <IsReportsCardOpenContext.Provider
                         value={{ isReportsCardOpen, toggleIsReportCardOpen }}
                       >
-                        <div className="font-quicksand">
-                          <Header />
-                          <section className="flex min-h-screen">
-                            <SideNav />
-                            <section className="mt-12 md:pl-60 w-full bg-lightgray overflow-hidden">
-                              <DashboardIntro
-                                isAppliances={isAppliancesOpen}
-                                isHelpSection={isHelpSectionOpen}
-                                isSettingSection={isSettingSectionOpen}
-                              />
-                              {children}
-                            </section>
-                          </section>
-                        </div>
+                        <ReportsPopUpContext.Provider
+                          value={{ isReportsPopUpOpen, toggleReportsPopUp }}
+                        >
+                          <ActiveStaffReportContext.Provider
+                            value={{ activeStaff, makeStaffActive }}
+                          >
+                            <div className="font-quicksand">
+                              <Header />
+                              <section className="flex min-h-screen">
+                                <SideNav />
+                                <section className="mt-12 md:pl-60 w-full bg-lightgray overflow-hidden">
+                                  <DashboardIntro
+                                    isAppliances={isAppliancesOpen}
+                                    isHelpSection={isHelpSectionOpen}
+                                    isSettingSection={isSettingSectionOpen}
+                                  />
+                                  {children}
+                                </section>
+                              </section>
+                            </div>
+                          </ActiveStaffReportContext.Provider>
+                        </ReportsPopUpContext.Provider>
                       </IsReportsCardOpenContext.Provider>
                     </ReportsCardContext.Provider>
                   </AddStaffOrUserContext.Provider>

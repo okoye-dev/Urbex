@@ -11,43 +11,46 @@ import Help from "./pages/Help/Layout";
 import Setting from "./pages/Setting/Layout";
 import Appliances from "./pages/ManageFacilities/Appliances";
 import Layout from "./pages/Layout";
+import ReportsCardByDate from "./pages/Reports/ReportsCardByDate";
 
 function App() {
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/dashboard" element={<Home />}></Route>
-          <Route path="/dashboard/home" element={<Home />}></Route>
+          <Route path="/" element={<Home />} />
+
+          <Route path="/dashboard" element={<Home />} />
+          <Route path="/dashboard/home" element={<Home />} />
           <Route
             path="/dashboard/create-facility"
             element={<CreateFacility />}
-          ></Route>
+          />
           <Route
             path="/dashboard/manage-facilities"
             element={<ManageFacilities />}
-          ></Route>
+          />
           <Route
             path="/dashboard/manage-facilities/appliances"
             element={<Appliances />}
-          ></Route>
-          <Route path="/dashboard/attendance" element={<Attendance />}></Route>
+          />
+          <Route path="/dashboard/attendance" element={<Attendance />} />
           <Route
             path="/dashboard/alert-and-notifications"
             element={<AlertAndNotifications />}
-          ></Route>
-          <Route
-            path="/dashboard/procurement"
-            element={<Procurement />}
-          ></Route>
+          />
+          <Route path="/dashboard/procurement" element={<Procurement />} />
           <Route
             path="/dashboard/add-staff-or-user"
             element={<AddStaffOrUser />}
-          ></Route>
-          <Route path="/dashboard/reports" element={<Reports />}></Route>
-          <Route path="/dashboard/help" element={<Help />}></Route>
-          <Route path="/dashboard/setting" element={<Setting />}></Route>
+          />
+          <Route path="/dashboard/reports" element={<Reports />} />
+          <Route
+            path="/dashboard/reports/:date"
+            element={<ReportsCardByDate />}
+          />
+          <Route path="/dashboard/help" element={<Help />} />
+          <Route path="/dashboard/setting" element={<Setting />} />
         </Routes>
       </Layout>
     </BrowserRouter>

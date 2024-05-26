@@ -1,45 +1,23 @@
-import { FC, useContext, useState } from "react";
+import { FC } from "react";
 import MyCalendar from "./MyCalendar";
 import TotalDataCard from "@/components/TotalDataCard";
 import { useTotalReportsDataCard } from "@/hooks/useTotalDataCard";
-import ReportsCardByDate from "./ReportsCardByDate";
-import { ReportsCardContext } from "@/contexts/ReportsCardContext";
-import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
-import { ReportsPopUpContext } from "@/contexts/ReportsPopUpContext";
-import { ActiveStaffReportContext } from "@/contexts/ActiveStaffReportContext";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {}
 
 const Reports: FC<IProps> = () => {
   const data = useTotalReportsDataCard();
-  const { isReportsCardOpen } = useContext(IsReportsCardOpenContext);
-  const { makeActiveReportsCard } = useContext(ReportsCardContext);
-  const [isReportsPopUpOpen, setIsReportsPopUpOpen] = useState(false);
-  const toggleReportsPopUp = () => {
-    setIsReportsPopUpOpen(!isReportsPopUpOpen);
+  const navigate = useNavigate();
+
+  const goToReportsForSpecificDate = (day: string) => {
+    navigate(`${day}`);
   };
-  const [activeStaff, setActiveStaff] = useState("");
-  const makeStaffActive = (staff: string) => {
-    setActiveStaff(staff);
-  };
+
   return (
     <div className="w-full">
-      {isReportsCardOpen ? (
-        <ReportsPopUpContext.Provider
-          value={{ isReportsPopUpOpen, toggleReportsPopUp }}
-        >
-          <ActiveStaffReportContext.Provider
-            value={{ activeStaff, makeStaffActive }}
-          >
-            <ReportsCardByDate />
-          </ActiveStaffReportContext.Provider>
-        </ReportsPopUpContext.Provider>
-      ) : (
-        <>
-          <TotalDataCard data={data} />
-          <MyCalendar onClick={makeActiveReportsCard} />
-        </>
-      )}
+      <TotalDataCard data={data} />
+      <MyCalendar onClick={goToReportsForSpecificDate} />
     </div>
   );
 };

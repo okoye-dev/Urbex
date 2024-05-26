@@ -9,7 +9,9 @@ import { AddAssetPopUpContext } from "@/contexts/AddAssetPopUpContext";
 import { AddStaffOrUserContext } from "@/contexts/AddStaffOrUserContext";
 import { ReportsCardContext } from "@/contexts/ReportsCardContext";
 import { IsReportsCardOpenContext } from "@/contexts/IsReportsCardOpenContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io";
+import { AppliancesContext } from "@/contexts/AppliancesContext";
 
 interface DashboardIntroProps {
   isAppliances?: boolean;
@@ -27,17 +29,39 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
   const { toggleAddStaffPopUp, isAddStaffPopUp } = useContext(
     AddStaffOrUserContext
   );
+  const { toggleAppliances } = useContext(AppliancesContext);
   const { activeReportsCard } = useContext(ReportsCardContext);
   const { isReportsCardOpen, toggleIsReportCardOpen } = useContext(
     IsReportsCardOpenContext
   );
+
   const isHelpSectionOpen = activeNav == "Help";
+
   const navigate = useNavigate();
+  const location = useLocation();
   const goToAddStaffOrUser = () => {
     activeNav !== "Add Staff/User" && makeActive("Add Staff/User");
+    navigate("/dashboard/add-staff-or-user", {
+      state: {
+        fromNav: activeNav,
+        fromPath: location.pathname,
+        to: "Add Staff/User",
+      },
+    });
     isReportsCardOpen && toggleIsReportCardOpen();
-    navigate("/dashboard/add-staff-or-user", { state: "Add Staff/User" });
     !isAddStaffPopUp && toggleAddStaffPopUp();
+  };
+
+  const goToManageFacilities = () => {
+    toggleAppliances();
+    makeActive("Manage Facilities");
+    navigate("/dashboard/manage-facilities");
+  };
+
+  const goBack = () => {
+    location.state?.fromNav &&
+      (makeActive(location.state.fromNav), navigate(location.state.fromPath));
+    location.state?.from && goToManageFacilities();
   };
 
   return (
@@ -53,15 +77,31 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
           >
             {isAppliances ? (
               <div className="flex gap-1">
-                <p>Manage Facilities</p> / Appliances
+                <p
+                  onClick={goBack}
+                  className="font-bold cursor-pointer hover:text-[blue]/50 transition-all duration-300 ease-in-out"
+                >
+                  Manage Facilities
+                </p>
+                / Appliances
               </div>
             ) : (
-              <p>{activeNav}</p>
+              <div className="flex gap-1 items-center">
+                {location.state?.fromNav && (
+                  <IoIosArrowBack
+                    onClick={goBack}
+                    className={`text-blue/50 hover:text-[blue]/80 transition-all duration-300 ease-in-out`}
+                  />
+                )}
+                <p>{activeNav}</p>
+              </div>
             )}
           </h1>
+
           {isAppliances && (
             <h1 className="font-bold ipad:pb-0 pb-2">{activeAppliance}</h1>
           )}
+
           {isReportsCardOpen && (
             <h1 className="font-bold ipad:pb-0 pb-2">
               {activeReportsCard} Reports
@@ -80,12 +120,10 @@ const DashboardIntro: FC<DashboardIntroProps> = ({
               <img src={support} alt="" className="pr-2" />
               Support
             </Button>
-          ) : isSettingSection ? (
-            <></>
           ) : (
             <>
               <Button onClick={goToAddStaffOrUser}>
-                <img src={addstaff} alt="" className="pr-2" />
+                <img src={addstaff} alt="add staff" className="pr-2" />
                 Add Staff/User
               </Button>
               <Button variant={"white"}>Manager POV</Button>

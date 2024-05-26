@@ -11,11 +11,11 @@ const AddStaffOrUser: FC<IProps> = () => {
   const data = useTotalStaffDataCard();
   const { isAddStaffPopUp } = useContext(AddStaffOrUserContext);
   return (
-    <div>
+    <>
       {isAddStaffPopUp && <AddStaffOrUserPopUp />}
       <TotalDataCard data={data} />
       <AddStaffFacilitiesTable />
-    </div>
+    </>
   );
 };
 

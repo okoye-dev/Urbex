@@ -18,7 +18,7 @@ const AddStaffFacilitiesTable: FC<IProps> = () => {
         <Selector placeholder={placeholder} options={options} />
       </div>
       <h1 className="font-bold py-1"> Facilities</h1>
-      <DataTable columns={columns} data={data} />;
+      <DataTable columns={columns} data={data} />
     </div>
   );
 };

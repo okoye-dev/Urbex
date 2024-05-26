@@ -63,20 +63,17 @@ export function DataTable<TData, TValue>({
       const state = `${name} (${type})`;
       openActiveAppliance(state);
 
-      const timeout = setTimeout(() => {
-        window.scrollTo({ behavior: "smooth", top: 0 });
-        toggleAppliances();
-
-        navigate("/dashboard/manage-facilities/appliances");
-      }, 100);
-      return () => clearTimeout(timeout);
+      window.scrollTo({ behavior: "smooth", top: 0 });
+      toggleAppliances();
+      navigate("/dashboard/manage-facilities/appliances", {
+        state: { from: location.pathname },
+      });
     } else if (location.pathname == "/dashboard/reports") {
       const staff = `${row.original.staff} - ${activeReportsCard}`;
 
       window.scrollTo({ behavior: "smooth", top: 0 });
-      !isReportsPopUpOpen && makeStaffActive(staff);
-      !isReportsPopUpOpen && toggleReportsPopUp();
-    } else return;
+      !isReportsPopUpOpen && (makeStaffActive(staff), toggleReportsPopUp());
+    }
   };
 
   return (

@@ -47,7 +47,7 @@ function App() {
           ></Route>
           <Route path="/dashboard/reports" element={<Reports />}></Route>
           <Route path="/dashboard/help" element={<Help />}></Route>
-          <Route path="/dashboard/settings" element={<Setting />}></Route>
+          <Route path="/dashboard/setting" element={<Setting />}></Route>
         </Routes>
       </Layout>
     </BrowserRouter>
